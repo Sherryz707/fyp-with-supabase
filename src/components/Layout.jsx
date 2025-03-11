@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <Navbar />
 
       {/* Main Content */}
-      <main className="flex-1 container mx-auto p-4">
+      <main className="flex-1">
         <Outlet />
       </main>
 

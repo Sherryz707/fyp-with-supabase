@@ -1,14 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "../components/Layout";
-import Lessons from "../components/Lessons";
+import Lessons from "../features/Lessons/components/LessonDashboard";
+import Profile from "../features/Profile/components/Page";
+import SignUp from "../features/Signup/Page";
+import Login from "../features/Login/Page";
+import LandingPage from "../features/LandingPage/components/Page";
+import CategorySelection from "../features/Categories/components/Page";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="signup" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
         <Route path="/" element={<Layout />}>
-          <Route index element={<Lessons />} />
+          <Route index element={<LandingPage />} />
           <Route path="lessons" element={<Lessons />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="category" element={<CategorySelection />} />
         </Route>
       </Routes>
     </Router>

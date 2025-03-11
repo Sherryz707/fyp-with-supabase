@@ -12,7 +12,7 @@ function ThemeController() {
 
   const toggleTheme = () => {
     setTheme((prevTheme) =>
-      prevTheme === "dracula" ? "caramellatte" : "dracula"
+      prevTheme === "dracula" ? "retro" : "dracula"
     );
   };
 
