@@ -6,6 +6,7 @@ const CardGrid = ({
   onQuizComplete,
   pointsEarned,
   activeTab,
+  setPoints,
 }) => {
   return (
     <div className="bg-base-200 p-6 rounded-[var(--radius-box)] shadow-md w-full">
@@ -73,6 +74,15 @@ const CardGrid = ({
                   ? "Locked"
                   : "Play Now"}
             </button>
+            {/* Play Again */}
+            {!card.unlocked && card.completed && (
+              <button
+                onClick={() => setPoints((prev) => prev + card.points)}
+                className={`mt-4 px-4 py-2 ml-4 rounded-[var(--radius-field)] font-bold transition bg-accent text-accent-content hover:brightness-110`}
+              >
+                Play Again!
+              </button>
+            )}
           </div>
         ))}
       </div>

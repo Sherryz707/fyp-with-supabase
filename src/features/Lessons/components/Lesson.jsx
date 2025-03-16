@@ -83,6 +83,7 @@ const Lesson = ({
           onQuizComplete={handleQuizCompletion}
           pointsEarned={pointsEarned}
           activeTab={activeTab}
+          setPoints={setPoints}
         />
       </main>
     </div>
