@@ -34,10 +34,15 @@ const Lesson = ({
   }, []);
 
   // Update locked state whenever cards change
+  // useEffect(() => {
+  //   const updatedCards = calculateLockedState(cards);
+  //   setCards(updatedCards);
+  // }, [cards, calculateLockedState]);
   useEffect(() => {
-    const updatedCards = calculateLockedState(cards);
-    setCards(updatedCards);
-  }, [cards, calculateLockedState]);
+    setCards((prevCards) => {
+      return calculateLockedState(prevCards);
+    });
+  }, [calculateLockedState]);
 
   // Handles marking a quiz as completed
   const handleQuizCompletion = (index) => {
