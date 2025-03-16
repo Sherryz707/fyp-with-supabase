@@ -1,51 +1,12 @@
-// const CardGrid = ({ points, cards, onQuizComplete }) => {
-//   return (
-//     <div className="bg-base-200 p-6 rounded-[var(--radius-box)] shadow-md w-full">
-//       {/* Points Earned Tab */}
-//       <div className="text-lg font-bold bg-primary text-primary-content px-4 py-2 rounded-[var(--radius-field)] w-fit mb-4">
-//         Total Points: {points} pts
-//       </div>
+import { Gift, Lock } from "lucide-react"; // Using Lucide React for icons
 
-//       {/* Grid for Cards */}
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//         {cards.map((card, index) => (
-//           <div
-//             key={index}
-//             className="bg-base-100 text-base-content p-4 rounded-[var(--radius-box)] shadow"
-//           >
-//             <img
-//               //   src={card.image}
-//               src="https://placehold.co/300x300"
-//               alt={card.title}
-//               className="w-full h-32 object-cover rounded-[var(--radius-box)]"
-//             />
-//             <h3 className="text-lg font-semibold mt-2">{card.title}</h3>
-//             <p className="text-neutral-content mt-1">{card.description}</p>
-//             <p className="text-sm font-semibold mt-2">Points: {card.points}</p>
-
-//             {/* Play Now Button */}
-//             <button
-//               onClick={() => onQuizComplete(index)}
-//               className={`mt-2 px-4 py-2 rounded-[var(--radius-field)] font-bold transition ${
-//                 card.completed
-//                   ? "bg-success text-success-content cursor-not-allowed"
-//                   : "bg-primary text-primary-content hover:brightness-110"
-//               }`}
-//               disabled={card.completed}
-//             >
-//               {card.completed ? "Completed" : "Play Now"}
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CardGrid;
-import { Gift } from "lucide-react"; // Using Lucide React for a cute gift icon
-
-const CardGrid = ({ points, cards, onQuizComplete, pointsEarned }) => {
+const CardGrid = ({
+  points,
+  cards,
+  onQuizComplete,
+  pointsEarned,
+  activeTab,
+}) => {
   return (
     <div className="bg-base-200 p-6 rounded-[var(--radius-box)] shadow-md w-full">
       {/* Points Earned Tab */}
@@ -58,8 +19,17 @@ const CardGrid = ({ points, cards, onQuizComplete, pointsEarned }) => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="relative bg-primary text-primary-content p-4 rounded-[var(--radius-box)] shadow-lg overflow-hidden"
+            className={`relative bg-primary text-primary-content p-4 rounded-[var(--radius-box)] shadow-lg overflow-hidden ${
+              card.locked ? "opacity-50" : ""
+            }`}
           >
+            {/* Lock Icon for Locked Quizzes */}
+            {card.locked && (
+              <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+                <Lock className="w-10 h-10 text-white" />
+              </div>
+            )}
+
             {/* Gift Badge - Only if the lesson has rewards */}
             {card.rewards?.length > 0 && (
               <div
@@ -91,11 +61,17 @@ const CardGrid = ({ points, cards, onQuizComplete, pointsEarned }) => {
               className={`mt-4 px-4 py-2 rounded-[var(--radius-field)] font-bold transition ${
                 card.completed
                   ? "bg-success text-success-content cursor-not-allowed"
-                  : "bg-accent text-accent-content hover:brightness-110"
+                  : card.locked
+                    ? "bg-gray-500 text-gray-200 cursor-not-allowed"
+                    : "bg-accent text-accent-content hover:brightness-110"
               }`}
-              disabled={card.completed}
+              disabled={card.completed || card.locked}
             >
-              {card.completed ? "Completed" : "Play Now"}
+              {card.completed
+                ? "Completed"
+                : card.locked
+                  ? "Locked"
+                  : "Play Now"}
             </button>
           </div>
         ))}

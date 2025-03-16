@@ -1,28 +1,34 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import React from "react";
-
-const categories = [
-  {
-    title: "Learn English Alphabets",
-    description: "Master A to Z with fun and engaging activities!",
-    image: "https://placehold.co/300x300",
-    color: "bg-primary",
-  },
-  {
-    title: "Learn Numbers",
-    description: "Count your way to success from 1 to 100!",
-    image: "https://placehold.co/300x300",
-    color: "bg-secondary",
-  },
-  {
-    title: "Learn Urdu Alphabets",
-    description: "Explore the beauty of Urdu script with interactive lessons!",
-    image: "https://placehold.co/300x300",
-    color: "bg-accent",
-  },
-];
+import { useState } from "react";
+import { useEffect } from "react";
+import { fetchCategories } from "../../../services/apiLessons";
 
 export default function Categories() {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchCategories();
+
+        if (!data) {
+          console.error("Error: No categories returned");
+          return;
+        }
+
+        setCategories(data);
+        console.log("received", data, "already present", categories);
+      } catch (err) {
+        console.error("Unexpected error:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const navigate = useNavigate(); // Hook for navigation
+
   return (
     <div className="min-h-screen bg-base-100 flex items-center justify-center p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl">
@@ -32,6 +38,7 @@ export default function Categories() {
             whileHover={{ scale: 1.1, rotate: 2 }}
             whileTap={{ scale: 0.95 }}
             className={`card shadow-xl p-6 rounded-2xl cursor-pointer transition-all duration-300 ${category.color}`}
+            onClick={() => navigate(`/${category.category}/lessons`)} // Navigate to lessons
           >
             <img
               src={category.image}
