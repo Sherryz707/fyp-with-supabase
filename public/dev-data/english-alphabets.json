@@ -1,0 +1,95 @@
+{
+  "subcategories": [
+    { 
+      "id": "A Alphabet", 
+      "name": "A Alphabet", 
+      "requiredPoints": 200,  
+      "totalPointsEarned": 0  
+    },
+    { 
+      "id": "B Alphabet", 
+      "name": "B Alphabet", 
+      "requiredPoints": 300,  
+      "totalPointsEarned": 0   
+    }
+  ],
+  "lessons": [
+    {
+      "category": "A Alphabet",
+      "title": "A Alphabet",
+      "description": "Test your A skills in a fun way!",
+      "image": "/images/math-quiz.jpg",
+      "points": 50,
+      "completed": false,
+      "locked": false,  
+      "order": 1,       
+      "rewards": [
+        { "image": "https://placehold.co/300x300", "name": "Math Champion Badge" }
+      ]
+    },
+    {
+      "category": "A Alphabet",
+      "title": "A Alphabet: MIX N MATCH",
+      "description": "Test your A skills in a fun way!",
+      "image": "/images/math-quiz.jpg",
+      "points": 100,
+      "completed": false,
+      "locked": true,  
+      "order": 2,       
+      "rewards": [
+      ]
+    },
+    {
+      "category": "A Alphabet",
+      "title": "A Alphabet: Free Play",
+      "description": "Practice your A skills in any order!",
+      "image": "/images/math-quiz.jpg",
+      "points": 75,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "image": "https://placehold.co/300x300", "name": "Free Play Badge" }
+      ]
+    },
+    {
+      "category": "A Alphabet",
+      "title": "A Alphabet: Challenge",
+      "description": "A bonus challenge for A Alphabet!",
+      "image": "/images/math-quiz.jpg",
+      "points": 150,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "image": "https://placehold.co/300x300", "name": "Challenge Master Badge" }
+      ]
+    },
+    {
+      "category": "B Alphabet",
+      "title": "Memory Game",
+      "description": "Match the cards to win points.",
+      "image": "/images/memory-game.jpg",
+      "points": 30,
+      "completed": false,
+      "locked": true,  
+      "order": 1,      
+      "rewards": [
+        { "image": "https://placehold.co/300x300", "name": "Memory Master Trophy" }
+      ]
+    },
+    {
+      "category": "B Alphabet",
+      "title": "B Alphabet: Free Play",
+      "description": "Practice your B skills in any order!",
+      "image": "/images/memory-game.jpg",
+      "points": 50,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "image": "https://placehold.co/300x300", "name": "Free Play Badge" }
+      ]
+    }
+  ]
+}
