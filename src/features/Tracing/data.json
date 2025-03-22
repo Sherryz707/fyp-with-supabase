@@ -1,0 +1,8 @@
+{
+    "images": [
+      { "src": "/sign_A.PNG", "label": "Step 1" },
+      { "src": "/final_models/Letter-A.jpg", "label": "Step 2" }
+    ],
+    "model": "/final_models/A.glb"
+  }
+  

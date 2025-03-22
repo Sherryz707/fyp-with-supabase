@@ -64,7 +64,7 @@ const LessonDashboard = () => {
           <Lesson
             key={activeTab.id}
             lessons={data.lessons.filter(
-              (l) => l.category === activeTab.name // Filter by category name
+              (l) => l.category === activeTab.id // Filter by category name
             )}
             setUserProgress={setUserProgress}
             userProgress={userProgress}
