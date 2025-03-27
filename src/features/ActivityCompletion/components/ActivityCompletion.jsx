@@ -63,26 +63,6 @@ const ActivityCompletion = ({
   onRestart,
   onNextActivity,
 }) => {
-  const activityTitles = {
-    quiz: "Quiz Completed!",
-    game: "Game Over!",
-    drawing: "Artwork Finished!",
-    default: "Activity Completed!",
-  };
-
-  const getActivityColor = () => {
-    switch (activityType) {
-      case "quiz":
-        return "bg-primary text-primary-content";
-      case "game":
-        return "bg-secondary text-secondary-content";
-      case "drawing":
-        return "bg-accent text-accent-content";
-      default:
-        return "bg-neutral text-neutral-content";
-    }
-  };
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-base-100">
       <Confetti
@@ -92,11 +72,9 @@ const ActivityCompletion = ({
       />
 
       <div
-        className={`rounded-3xl shadow-xl p-8 max-w-md w-full text-center ${getActivityColor()}`}
+        className={`rounded-3xl shadow-xl p-8 max-w-md w-full text-center bg-secondary text-secondary-content`}
       >
-        <h1 className="text-3xl font-bold mb-6">
-          {activityTitles[activityType] || activityTitles.default}
-        </h1>
+        <h1 className="text-3xl font-bold mb-6">Activity Completed!</h1>
 
         <div className="text-xl mb-4 bg-base-100 rounded-box p-4 text-base-content">
           You earned <span className="font-bold text-primary">{points}</span>{" "}
