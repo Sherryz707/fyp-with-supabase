@@ -1,9 +1,8 @@
 {
-    "type":"colouring",
-    "images": [
-      { "src": "/colouring/sign_A.PNG", "label": "Step 1" },
-      { "src": "/colouring/Letter-A.jpg", "label": "Step 2" }
-    ],
-    "model": "/models/A.glb"
-  }
-  
+  "type": "colouring",
+  "images": [
+    { "src": "/colouring/sign_A.PNG", "label": "Step 1" },
+    { "src": "/colouring/Letter-A.jpg", "label": "Step 2" }
+  ],
+  "model": "/models/Sherryz707/am_ded/main/public/final_models/A.glb"
+}

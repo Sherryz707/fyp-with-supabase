@@ -276,7 +276,12 @@ const DrawingExp = ({ onComplete, json }) => {
         </h2>
 
         <div className="relative bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 flex justify-center items-center">
-          {data.images.length > 0 && <HandColouringCanvas {...canvasProps} />}
+          {data.images.length > 0 && (
+            <HandColouringCanvas
+              imageUrl={canvasProps.imageUrl}
+              key={canvasProps.key}
+            />
+          )}
         </div>
 
         {state.showNextButton && (
