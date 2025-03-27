@@ -1,4 +1,5 @@
 import { Gift, Lock } from "lucide-react"; // Using Lucide React for icons
+import { useNavigate, useParams } from "react-router-dom";
 
 const CardGrid = ({
   points,
@@ -7,7 +8,11 @@ const CardGrid = ({
   pointsEarned,
   activeTab,
   setPoints,
+  lessonId,
 }) => {
+  console.log("active tab", activeTab, lessonId);
+  const { category } = useParams();
+  const navigate = useNavigate();
   return (
     <div className="bg-base-200 p-6 rounded-[var(--radius-box)] shadow-md w-full">
       {/* Points Earned Tab */}
@@ -58,7 +63,16 @@ const CardGrid = ({
 
             {/* Play Now Button */}
             <button
-              onClick={() => onQuizComplete(index)}
+              // onClick={() => onQuizComplete(index)}
+              onClick={() =>
+                navigate(`/${category}/${activeTab.slug}/quiz/${card.quizId}`, {
+                  replace: true,
+                  state: {
+                    points: card.points,
+                    card: card,
+                  },
+                })
+              }
               className={`mt-4 px-4 py-2 rounded-[var(--radius-field)] font-bold transition ${
                 card.completed
                   ? "bg-success text-success-content cursor-not-allowed"

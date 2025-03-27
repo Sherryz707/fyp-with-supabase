@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "userId": "demo-user",
+      "progress": [
+        {
+          "categoryId": "english-alphabets",
+          "subcategoryId": "A-Alphabet-id",
+          "lessonId": "123",
+          "completed": true,
+          "pointsEarned": 20,
+          "lastUpdated": "2023-11-15"
+        },
+        {
+          "categoryId": "english-alphabets",
+          "subcategoryId": "A-Alphabet-id",
+          "lessonId": "456",
+          "completed": true,
+          "pointsEarned": 50,
+          "lastUpdated": "2023-11-15"
+        }
+      ]
+    }
+  ]
+}

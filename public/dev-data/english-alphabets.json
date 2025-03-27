@@ -4,18 +4,24 @@
       "id": "A-Alphabet-id", 
       "name": "A Alphabet", 
       "requiredPoints": 200,  
-      "totalPointsEarned": 0  
+      "totalPointsEarned": 0 ,
+      "slug":"A-Alphabet",
+      "parentCat":"cat-123"
     },
     { 
       "id": "B-Alphabet-id", 
       "name": "B Alphabet", 
       "requiredPoints": 300,  
-      "totalPointsEarned": 0   
+      "totalPointsEarned": 0,
+      "slug":"B-Alphabet",
+      "parentCat":"cat-345"   
     }
   ],
   "lessons": [
     {
+      "id":"123",
       "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
       "title": "It's Colouring Time !!",
       "description": "Its time to colour A and its sign!",
       "image": "/images/math-quiz.jpg",
@@ -26,10 +32,12 @@
       "rewards": [
         { "image": "https://placehold.co/300x300", "name": "Math Champion Badge" }
       ],
-      "quiz-id":"quiz-123"
+      "quizId":"quiz-color"
     },
     {
+      "id":"456",
       "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
       "title": "A Alphabet: MIX N MATCH",
       "description": "Test your A skills in a fun way!",
       "image": "/images/math-quiz.jpg",
@@ -38,10 +46,13 @@
       "locked": true,  
       "order": 2,       
       "rewards": [
-      ]
+      ],
+      "quizId":"quiz-mix"
     },
     {
+      "id":"789",
       "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
       "title": "A Alphabet: Free Play",
       "description": "Practice your A skills in any order!",
       "image": "/images/math-quiz.jpg",
@@ -54,7 +65,9 @@
       ]
     },
     {
+      "id":"1011",
       "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
       "title": "A Alphabet: Challenge",
       "description": "A bonus challenge for A Alphabet!",
       "image": "/images/math-quiz.jpg",
@@ -67,7 +80,9 @@
       ]
     },
     {
+      "id":"1213",
       "category": "B-Alphabet-id",
+      "parentCat":"cat-345",
       "title": "Memory Game",
       "description": "Match the cards to win points.",
       "image": "/images/memory-game.jpg",
@@ -80,7 +95,9 @@
       ]
     },
     {
+      "id":"1415",
       "category": "B-Alphabet-id",
+      "parentCat":"cat-345",
       "title": "B Alphabet: Free Play",
       "description": "Practice your B skills in any order!",
       "image": "/images/memory-game.jpg",
