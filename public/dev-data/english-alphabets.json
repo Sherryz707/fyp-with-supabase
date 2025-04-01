@@ -25,14 +25,14 @@
       "title": "It's Colouring Time !!",
       "description": "Its time to colour A and its sign!",
       "image": "/images/math-quiz.jpg",
-      "points": 50,
+      "points": 1050,
       "completed": false,
       "locked": false,  
       "order": 1,       
       "rewards": [
         { "image": "https://placehold.co/300x300", "name": "Math Champion Badge" }
       ],
-      "quizId":"quiz-color"
+      "quizId":"quiz123"
     },
     {
       "id":"456",
@@ -47,7 +47,7 @@
       "order": 2,       
       "rewards": [
       ],
-      "quizId":"quiz-mix"
+      "quizId":"quizCard123"
     },
     {
       "id":"789",

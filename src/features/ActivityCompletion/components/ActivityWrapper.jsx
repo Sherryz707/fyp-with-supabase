@@ -5,7 +5,7 @@ import { completeQuiz } from "../../../services/progressService";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const ActivityWrapper = ({ ActivityComponent, activityType, ...props }) => {
-  const currentUser = "demo-user"; // In real app, get from auth context
+  const currentUser = "demo-user";
   const location = useLocation();
   const navigate = useNavigate();
   const { category } = useParams();
@@ -13,12 +13,10 @@ const ActivityWrapper = ({ ActivityComponent, activityType, ...props }) => {
   const [isCompleted, setIsCompleted] = useState(false);
   const [pointsEarned, setPointsEarned] = useState(0);
 
-  const handleQuizComplete = () => {
-    // For demo, we'll hardcode activeTab - in real app pass this as prop
+  const handleQuizComplete = (pointsEarn) => {
     setIsCompleted(true);
-    setPointsEarned(points);
+    setPointsEarned(pointsEarn);
     completeQuiz(card, points, currentUser);
-    // Optionally notify parent component or update state
   };
   const handleRestart = () => {
     setIsCompleted(false);
@@ -43,7 +41,13 @@ const ActivityWrapper = ({ ActivityComponent, activityType, ...props }) => {
     );
   }
 
-  return <ActivityComponent onComplete={handleQuizComplete} {...props} />;
+  return (
+    <ActivityComponent
+      onComplete={handleQuizComplete}
+      {...props}
+      points={points}
+    />
+  );
 };
 
 export default ActivityWrapper;

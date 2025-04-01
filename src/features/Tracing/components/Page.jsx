@@ -179,7 +179,7 @@ const Confetti = React.lazy(() => import("react-confetti"));
 import HandColouringCanvas from "./ColouringCanvas";
 import Experience from "../../../components/Experience";
 
-const DrawingExp = ({ onComplete, json }) => {
+const DrawingExp = ({ onComplete, json, points }) => {
   // State optimizations
   const [state, setState] = useState({
     showDrawingCanvas: false,
@@ -210,9 +210,8 @@ const DrawingExp = ({ onComplete, json }) => {
   // Optimized event handler with useCallback
   const handleNextClick = useCallback(() => {
     if (state.showDrawingCanvas) {
-      const pointsEarned = 10;
       setState((prev) => ({ ...prev, showConfetti: true }));
-      onComplete(pointsEarned);
+      onComplete(points);
     } else {
       setState((prev) => ({
         ...prev,
