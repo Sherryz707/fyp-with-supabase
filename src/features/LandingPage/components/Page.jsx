@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-base-100 text-base-content">

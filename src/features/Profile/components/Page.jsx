@@ -22,7 +22,7 @@ const Profile = () => {
         {/* Profile Picture */}
         <div className="relative w-24 h-24 sm:w-32 sm:h-32">
           <img
-            src="https://placehold.co/200x200"
+            src="https://avatar.iran.liara.run/public"
             alt="Profile"
             className="rounded-full border-4 border-primary w-full h-full object-cover"
           />

@@ -82,19 +82,19 @@ function QuizPage() {
       });
   }, []);
 
-  // if (!quiz) return <p>Loading Quiz...</p>;
+  if (!quiz) return <p>Loading Quiz...</p>;
 
   return (
     <div>
-      {!quiz && (
+      {/* {!quiz && (
         <ActivityWrapper
           ActivityComponent={TestQuizCard}
           activityType="quiz"
           json={quiz}
           points={points}
         />
-      )}
-      {/* {quiz.type === "colouring" && (
+      )} */}
+      {quiz.type === "colouring" && (
         <ActivityWrapper
           ActivityComponent={DrawingExp}
           activityType="drawing"
@@ -109,7 +109,7 @@ function QuizPage() {
           json={quiz}
           points={points}
         />
-      )} */}
+      )}
     </div>
   );
 }
