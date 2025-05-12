@@ -67,11 +67,12 @@ import DrawingExp from "../../Tracing/components/Page";
 import { completeQuiz } from "../../../services/progressService";
 import ActivityWrapper from "../../ActivityCompletion/components/ActivityWrapper";
 import QuizCard from "../../QuizCard/Page";
+import TestQuizCard from "./TestQuizCard";
 
 function QuizPage() {
   const [quiz, setQuiz] = useState(null);
   const location = useLocation();
-  const { points, card } = location.state;
+  const { points, card, replay } = location.state;
   useEffect(() => {
     console.log("card", card.quizId);
     fetch(`/dev-data/quiz/${card.quizId}.json`)
@@ -81,11 +82,19 @@ function QuizPage() {
       });
   }, []);
 
-  if (!quiz) return <p>Loading Quiz...</p>;
+  // if (!quiz) return <p>Loading Quiz...</p>;
 
   return (
     <div>
-      {quiz.type === "colouring" && (
+      {!quiz && (
+        <ActivityWrapper
+          ActivityComponent={TestQuizCard}
+          activityType="quiz"
+          json={quiz}
+          points={points}
+        />
+      )}
+      {/* {quiz.type === "colouring" && (
         <ActivityWrapper
           ActivityComponent={DrawingExp}
           activityType="drawing"
@@ -100,7 +109,7 @@ function QuizPage() {
           json={quiz}
           points={points}
         />
-      )}
+      )} */}
     </div>
   );
 }

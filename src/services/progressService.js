@@ -19,12 +19,19 @@ export const saveUserProgress = async (userId, progress) => {
   localStorage.setItem(`user-progress-${userId}`, JSON.stringify(progress));
 };
 export const completeQuiz = (card, pointsEarned, currentUser) => {
-  const { id: lessonId, category: categoryId, parentCat } = card;
+  console.log(
+    "points needed",
+    card,
+    "points earnede:",
+    pointsEarned,
+    pointsEarned == card.points
+  );
+  const { id: lessonId, category: categoryId, parentCat, points } = card;
   const progressItem = {
     categoryId: parentCat,
     subcategoryId: categoryId,
     lessonId: lessonId,
-    completed: true,
+    completed: pointsEarned == points,
     pointsEarned,
     lastUpdated: new Date().toISOString().split("T")[0],
   };

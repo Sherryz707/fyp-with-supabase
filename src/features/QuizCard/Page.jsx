@@ -145,7 +145,7 @@ const QuizCard = ({ onComplete, points, json }) => {
     () => ({
       TOTAL_POINTS: points,
       LEVELS: quizData?.levels || 1,
-      POINTS_PER_LEVEL: Math.floor(points / (quizData?.levels || 1)), // Using Math.floor here
+      POINTS_PER_LEVEL: points / (quizData?.levels || 1),
     }),
     [points, quizData]
   );
@@ -195,8 +195,8 @@ const QuizCard = ({ onComplete, points, json }) => {
           setSelectedAnswer(null);
           setPics(getNewLevelImages(quizData.images));
         } else {
-          const finalScore = Math.floor(score + pointsToAdd); // Floor the final score
-          onComplete(finalScore);
+          const finalScore = score + (isCorrect ? POINTS_PER_LEVEL : 0);
+          onComplete(Math.round(finalScore));
         }
       }, 1500);
 
@@ -249,7 +249,7 @@ const QuizCard = ({ onComplete, points, json }) => {
             <div className="text-xl font-semibold text-gray-800">
               Score:{" "}
               <span className="text-green-600 font-bold">
-                {Math.floor(score)}
+                {Math.round(score)}
               </span>{" "}
               / {TOTAL_POINTS}
             </div>

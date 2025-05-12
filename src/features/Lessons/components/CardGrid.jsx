@@ -66,10 +66,10 @@ const CardGrid = ({
               // onClick={() => onQuizComplete(index)}
               onClick={() =>
                 navigate(`/${category}/${activeTab.slug}/quiz/${card.quizId}`, {
-                  replace: true,
                   state: {
                     points: card.points,
                     card: card,
+                    replay: false,
                   },
                 })
               }
@@ -91,7 +91,19 @@ const CardGrid = ({
             {/* Play Again */}
             {!card.unlocked && card.completed && (
               <button
-                onClick={() => setPoints((prev) => prev + card.points)}
+                onClick={() =>
+                  navigate(
+                    `/${category}/${activeTab.slug}/quiz/${card.quizId}`,
+                    {
+                      replace: true,
+                      state: {
+                        points: card.points,
+                        card: card,
+                        replay: true,
+                      },
+                    }
+                  )
+                }
                 className={`mt-4 px-4 py-2 ml-4 rounded-[var(--radius-field)] font-bold transition bg-accent text-accent-content hover:brightness-110`}
               >
                 Play Again!
