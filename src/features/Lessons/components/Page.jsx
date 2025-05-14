@@ -130,6 +130,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Lesson from "./Lesson";
 import { loadUserProgress } from "../../../services/progressService";
+import { useAuth } from "../../../context/AuthContext";
 
 const LessonDashboard = () => {
   const { category, activeTabParam } = useParams();
@@ -137,7 +138,8 @@ const LessonDashboard = () => {
   const [data, setData] = useState({ subcategories: [], lessons: [] });
   const [activeTab, setActiveTab] = useState(null);
   const [userProgress, setUserProgress] = useState([]);
-  const [currentUser] = useState("demo-user");
+  const { user:currentUser } = useAuth();
+  
 
   useEffect(() => {
     const loadData = async () => {

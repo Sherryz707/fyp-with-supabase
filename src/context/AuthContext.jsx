@@ -26,12 +26,12 @@ export const AuthProvider = ({ children }) => {
     return false;
   };
 
-  const signup = (email, password) => {
+  const signup = (email, password, name, gender) => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const exists = users.find((u) => u.email === email);
     if (exists) return false;
 
-    const newUser = { email, password };
+    const newUser = { email, password, name, gender };
     const updatedUsers = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     localStorage.setItem("user", JSON.stringify(newUser));

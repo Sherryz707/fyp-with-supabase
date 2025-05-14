@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import ActivityCompletion from "./ActivityCompletion";
 import { completeQuiz } from "../../../services/progressService";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
 
 const ActivityWrapper = ({ ActivityComponent, activityType, ...props }) => {
-  const currentUser = "demo-user";
   const location = useLocation();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { category } = useParams();
   const { points, card, replay } = location.state;
   const [isCompleted, setIsCompleted] = useState(false);
@@ -18,7 +19,7 @@ const ActivityWrapper = ({ ActivityComponent, activityType, ...props }) => {
     setPointsEarned(pointsEarn);
     // completeQuiz(card, pointsEarn, currentUser);
     if (!replay) {
-      completeQuiz(card, pointsEarn, currentUser);
+      completeQuiz(card, pointsEarn, user);
     } else {
       console.log("Replay mode: skipping progress update.");
     }

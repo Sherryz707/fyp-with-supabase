@@ -46,62 +46,68 @@ import LessonDashboard from "../features/Lessons/components/Page";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { AuthProvider } from "../context/AuthContext";
 import Logout from "../components/Logout";
+import Home from "../features/Room/components/Page";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/logout" element={<Logout />} />
-
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+    <Router>
+      <Routes>
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/my-home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/:category/:lesson/quiz/:quizId"
+          element={
+            <ProtectedRoute>
+              <QuizPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<LandingPage />} />
           <Route
-            path="/:category/:lesson/quiz/:quizId"
+            path=":category"
             element={
               <ProtectedRoute>
-                <QuizPage />
+                <LessonDashboard />
               </ProtectedRoute>
             }
           />
-          <Route path="/" element={<Layout />}>
-            <Route index element={<LandingPage />} />
-            <Route
-              path=":category"
-              element={
-                <ProtectedRoute>
-                  <LessonDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path=":category/:activeTab"
-              element={
-                <ProtectedRoute>
-                  <LessonDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="category"
-              element={
-                <ProtectedRoute>
-                  <CategorySelection />
-                </ProtectedRoute>
-              }
-            />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+          <Route
+            path=":category/:activeTab"
+            element={
+              <ProtectedRoute>
+                <LessonDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="category"
+            element={
+              <ProtectedRoute>
+                <CategorySelection />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+      </Routes>
+    </Router>
   );
 };
 

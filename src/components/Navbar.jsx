@@ -3,7 +3,7 @@ import ThemeController from "./ThemeController";
 import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
-  const { user } = useAuth(); // get the logged-in user
+  const { user: authUser } = useAuth(); // get the logged-in user
   return (
     <div className="navbar bg-base-100 shadow-sm px-10">
       <div className="flex-1">
@@ -27,7 +27,7 @@ function Navbar() {
         </ul>
 
         {/* Profile Dropdown */}
-        {user && (
+        {authUser && (
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -35,7 +35,9 @@ function Navbar() {
               className="btn btn-ghost btn-circle avatar placeholder"
             >
               <div className="bg-neutral text-neutral-content rounded-full w-10 h-10 flex items-center justify-center font-bold text-center">
-                <img src="https://avatar.iran.liara.run/public" />
+                <img
+                  src={`https://avatar.iran.liara.run/public/${authUser.gender == "female" ? "girl" : "boy"}`}
+                />
               </div>
             </div>
             <ul
