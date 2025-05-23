@@ -3,16 +3,12 @@
     { 
       "id": "A-Alphabet-id", 
       "name": "A Alphabet", 
-      "requiredPoints": 200,  
-      "totalPointsEarned": 0 ,
       "slug":"A-Alphabet",
       "parentCat":"cat-123"
     },
     { 
       "id": "B-Alphabet-id", 
-      "name": "B Alphabet", 
-      "requiredPoints": 300,  
-      "totalPointsEarned": 0,
+      "name": "B Alphabet",
       "slug":"B-Alphabet",
       "parentCat":"cat-345"   
     }
@@ -30,7 +26,7 @@
       "locked": false,  
       "order": 1,       
       "rewards": [
-        { "image": "https://placehold.co/300x300", "name": "Math Champion Badge" }
+        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"quiz123"
     },
@@ -61,8 +57,9 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "image": "https://placehold.co/300x300", "name": "Free Play Badge" }
-      ]
+         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"animationSet-A"
     },
     {
       "id":"1011",
@@ -76,7 +73,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "image": "https://placehold.co/300x300", "name": "Challenge Master Badge" }
+        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ]
     },
     {
@@ -91,7 +88,7 @@
       "locked": true,  
       "order": 1,      
       "rewards": [
-        { "image": "https://placehold.co/300x300", "name": "Memory Master Trophy" }
+         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ]
     },
     {
@@ -106,7 +103,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "image": "https://placehold.co/300x300", "name": "Free Play Badge" }
+         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ]
     }
   ]

@@ -14,7 +14,7 @@ export default function Experience({ selectedAnswer, model }) {
   });
 
   const directionalLightSettings = useControls("Directional Light", {
-    intensity: { value: 4.4, min: 0, max: 5, step: 0.1 },
+    intensity: { value: 0.3, min: 0, max: 5, step: 0.1 },
     x: { value: 0, min: -10, max: 10, step: 0.1 },
     y: { value: 5, min: -10, max: 10, step: 0.1 },
     z: { value: 5, min: -10, max: 10, step: 0.1 },

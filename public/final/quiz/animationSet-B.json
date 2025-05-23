@@ -1,0 +1,36 @@
+{ "type": "teaching",
+  "sequence": [
+    {
+      "animation": "/models/Sherryz707/Storage/main/animations/Waving.fbx",
+      "expression": ["happy", "ou"],
+      "text": "Hello!"
+    },
+    {
+      "animation": "/models/Sherryz707/Storage/main/animations/niceTo.glb",
+      "expression": ["happy", "ee"],
+      "text": "Nice to meet you !"
+    }
+  ],
+  "mainAction": {
+    "animation": "/models/Sherryz707/Storage/main/animations/B.glb",
+    "expression": ["neutral"],
+    "text": "This is B"
+  },
+  "feedback": {
+    "correct": {
+      "animation": "/models/Sherryz707/Storage/main/animations/Excited.fbx",
+      "expression": ["happy", "ee"],
+      "text": "Great Job"
+    },
+    "wrong": {
+      "animation": "/models/Sherryz707/Storage/main/animations/Angry.fbx",
+      "expression": ["angry"],
+      "text": "Wrong Answer"
+    }
+  },
+  "bye": {
+    "animation": "/models/Sherryz707/Storage/main/animations/Bye.fbx",
+    "expression": ["happy", "ee"],
+    "text": "Bye!!!"
+  }
+}

@@ -1,0 +1,36 @@
+{ "type": "teaching",
+  "sequence": [
+    {
+      "animation": "/dev-data/animations/Waving.fbx",
+      "expression": ["happy", "ou"],
+      "text": "Hello!"
+    },
+    {
+      "animation": "/dev-data/animations/niceTo.glb",
+      "expression": ["happy", "ee"],
+      "text": "Nice to meet you !"
+    }
+  ],
+  "mainAction": {
+    "animation": "/dev-data/animations/sign_a_anim.glb",
+    "expression": ["neutral"],
+    "text": "This is A"
+  },
+  "feedback": {
+    "correct": {
+      "animation": "/dev-data/animations/Excited.fbx",
+      "expression": ["happy", "ee"],
+      "text": "Great Job"
+    },
+    "wrong": {
+      "animation": "/dev-data/animations/Angry.fbx",
+      "expression": ["angry"],
+      "text": "Wrong Answer"
+    }
+  },
+  "bye": {
+    "animation": "/dev-data/animations/Bye.fbx",
+    "expression": ["happy", "ee"],
+    "text": "Bye!!!"
+  }
+}

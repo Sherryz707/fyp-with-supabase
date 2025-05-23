@@ -1,0 +1,26 @@
+{"data":[
+    {
+      "id": "cat-eng",
+      "slug": "english-alphabets",
+      "title": "English Alphabets",
+      "description": "Learn A-Z with interactive exercises",
+      "image": "https://placehold.co/300x300",
+      "color": "bg-primary text-primary-content"
+    },
+    {
+      "id": "cat-math",
+      "slug": "math-numbers",
+      "title": "Math Numbers",
+      "description": "Numbers, counting and simple arithmetic",
+      "image": "https://placehold.co/300x300",
+      "color": "bg-secondary text-secondary-content"
+    },
+    {
+      "id": "cat-urdu",
+      "slug": "urdu-alphabets",
+      "title": "Urdu Alphabets",
+      "description": "Numbers, counting and simple arithmetic",
+      "image": "https://placehold.co/300x300",
+      "color": "bg-accent text-accent-content"
+    }
+]}

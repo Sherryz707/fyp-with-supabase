@@ -1,0 +1,110 @@
+{
+  "subcategories": [
+    { 
+      "id": "A-Alphabet-id", 
+      "name": "A Alphabet", 
+      "slug":"A-Alphabet",
+      "parentCat":"cat-123"
+    },
+    { 
+      "id": "B-Alphabet-id", 
+      "name": "B Alphabet",
+      "slug":"B-Alphabet",
+      "parentCat":"cat-345"   
+    }
+  ],
+  "lessons": [
+    {
+      "id":"123",
+      "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
+      "title": "It's Colouring Time !!",
+      "description": "Its time to colour A and its sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 1050,
+      "completed": false,
+      "locked": false,  
+      "order": 1,       
+      "rewards": [
+        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"quiz123"
+    },
+    {
+      "id":"456",
+      "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
+      "title": "A Alphabet: Find the Correct Card!",
+      "description": "Find out the real A Sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 100,
+      "completed": false,
+      "locked": true,  
+      "order": 2,       
+      "rewards": [
+      ],
+      "quizId":"quizCard123"
+    },
+    {
+      "id":"789",
+      "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
+      "title": "A Alphabet: Teacher!",
+      "description": "Let's learn and test how to sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 75,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"animationSet-A"
+    },
+    {
+      "id":"1011",
+      "category": "A-Alphabet-id",
+      "parentCat":"cat-345",
+      "title": "A Alphabet: Sleepy Letter",
+      "description": "Oh no! Wake A up by signing correctly!",
+      "image": "/images/math-quiz.jpg",
+      "points": 150,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ]
+    },
+    {
+      "id":"1213",
+      "category": "B-Alphabet-id",
+      "parentCat":"cat-345",
+      "title": "Memory Game",
+      "description": "Match the cards to win points.",
+      "image": "/images/memory-game.jpg",
+      "points": 30,
+      "completed": false,
+      "locked": true,  
+      "order": 1,      
+      "rewards": [
+         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ]
+    },
+    {
+      "id":"1415",
+      "category": "B-Alphabet-id",
+      "parentCat":"cat-345",
+      "title": "B Alphabet: Free Play",
+      "description": "Practice your B skills in any order!",
+      "image": "/images/memory-game.jpg",
+      "points": 50,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ]
+    }
+  ]
+}

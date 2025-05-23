@@ -1,0 +1,8 @@
+{
+  "type": "colouring",
+  "images": [
+    { "src": "/models/Sherryz707/Storage/main/Sign-C-Color.jpg", "label": "Step 1" },
+    { "src": "/models/Sherryz707/Storage/main/Letter-C-Color.jpg", "label": "Step 2" }
+  ],
+  "model": "/models/Sherryz707/Storage/main/C.glb"
+}

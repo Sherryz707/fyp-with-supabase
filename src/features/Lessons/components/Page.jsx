@@ -138,14 +138,14 @@ const LessonDashboard = () => {
   const [data, setData] = useState({ subcategories: [], lessons: [] });
   const [activeTab, setActiveTab] = useState(null);
   const [userProgress, setUserProgress] = useState([]);
-  const { user:currentUser } = useAuth();
-  
+  const { user: currentUser } = useAuth();
 
   useEffect(() => {
     const loadData = async () => {
       try {
         // Load lesson data
-        const lessonsResponse = await fetch("/dev-data/english-alphabets.json");
+        console.log("category", category);
+        const lessonsResponse = await fetch(`/final/${category}/${category}.json`);
         if (!lessonsResponse.ok) throw new Error("Failed to fetch lessons");
         const lessonsData = await lessonsResponse.json();
 

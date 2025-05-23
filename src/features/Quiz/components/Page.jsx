@@ -68,6 +68,7 @@ import { completeQuiz } from "../../../services/progressService";
 import ActivityWrapper from "../../ActivityCompletion/components/ActivityWrapper";
 import QuizCard from "../../QuizCard/Page";
 import TestQuizCard from "./TestQuizCard";
+import Scene from "../../Teacher/Experience";
 
 function QuizPage() {
   const [quiz, setQuiz] = useState(null);
@@ -75,9 +76,10 @@ function QuizPage() {
   const { points, card, replay } = location.state;
   useEffect(() => {
     console.log("card", card.quizId);
-    fetch(`/dev-data/quiz/${card.quizId}.json`)
+    fetch(`/final/quiz/${card.quizId}.json`)
       .then((res) => res.json())
       .then((data) => {
+        console.log("data", data);
         setQuiz(data);
       });
   }, []);
@@ -105,7 +107,15 @@ function QuizPage() {
       {quiz.type === "quizCard" && (
         <ActivityWrapper
           ActivityComponent={QuizCard}
-          activityType="drawing"
+          activityType="quiz cards"
+          json={quiz}
+          points={points}
+        />
+      )}
+      {quiz.type === "teaching" && (
+        <ActivityWrapper
+          ActivityComponent={Scene}
+          activityType="teaching"
           json={quiz}
           points={points}
         />
