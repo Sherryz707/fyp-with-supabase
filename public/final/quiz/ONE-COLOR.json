@@ -1,0 +1,9 @@
+{
+  "type": "colouring",
+  "images": [
+    { "src": "/models/Sherryz707/Storage/main/Number-1-Color.png", "label": "Step 1" },
+    { "src": "/models/Sherryz707/Storage/main/Sign-1-Color.jpg", "label": "Step 2" }
+  ],
+  "model": "/models/Sherryz707/Storage/main/One.glb",
+  "modelPosY":1.1
+}

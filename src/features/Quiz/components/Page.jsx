@@ -69,6 +69,7 @@ import ActivityWrapper from "../../ActivityCompletion/components/ActivityWrapper
 import QuizCard from "../../QuizCard/Page";
 import TestQuizCard from "./TestQuizCard";
 import Scene from "../../Teacher/Experience";
+import Intro from "../../Sleep/Intro";
 
 function QuizPage() {
   const [quiz, setQuiz] = useState(null);
@@ -115,6 +116,14 @@ function QuizPage() {
       {quiz.type === "teaching" && (
         <ActivityWrapper
           ActivityComponent={Scene}
+          activityType="teaching"
+          json={quiz}
+          points={points}
+        />
+      )}
+      {quiz.type === "sleeping" && (
+        <ActivityWrapper
+          ActivityComponent={Intro}
           activityType="teaching"
           json={quiz}
           points={points}

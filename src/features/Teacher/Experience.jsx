@@ -407,7 +407,7 @@ export function Model({
   );
 }
 
-export default function Scene({ onComplete, json }) {
+export default function Scene({ onComplete, json, points }) {
   const [animationSet, setAnimationSet] = useState(null);
   const [currentVrm, setCurrentVrm] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -431,8 +431,6 @@ export default function Scene({ onComplete, json }) {
     if (type === "correct") {
       setCorrectStreak((prev) => {
         const updated = prev + 1;
-        setScore((prevScore) => prevScore + Math.floor(maxPoints / 3));
-
         if (updated >= 3) {
           console.log("won this");
           setGameWon(true);
@@ -440,6 +438,9 @@ export default function Scene({ onComplete, json }) {
         }
         return updated;
       });
+      const pointsPerCorrect = Math.floor(points / 3);
+      console.log("points per corr", pointsPerCorrect, "tru", points);
+      setScore((prevScore) => prevScore + pointsPerCorrect);
     } else if (type === "wrong") {
       setLives((prev) => {
         const newLives = prev - 1;

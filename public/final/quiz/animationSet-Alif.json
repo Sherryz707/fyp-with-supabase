@@ -14,7 +14,7 @@
   "mainAction": {
     "animation": "/models/Sherryz707/Storage/main/animations/A.glb",
     "expression": ["neutral"],
-    "text": "This is A"
+    "text": "This is ا/ الف"
   },
   "feedback": {
     "correct": {

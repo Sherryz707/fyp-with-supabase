@@ -146,7 +146,11 @@ const QuizCard = ({ onComplete, points, json }) => {
         </div>
 
         <div className="w-1/2 flex justify-center items-center">
-          <Experience selectedAnswer={selectedAnswer} model={quizData.model} />
+          <Experience
+            selectedAnswer={selectedAnswer}
+            model={quizData.model}
+            modelPosY={json?.modelPosY ?? null}
+          />
         </div>
       </div>
     </div>

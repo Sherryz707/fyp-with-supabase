@@ -26,7 +26,7 @@ export const completeQuiz = (card, pointsEarned, currentUser) => {
     categoryId: parentCat,
     subcategoryId: categoryId,
     lessonId: lessonId,
-    completed: pointsEarned == points,
+    completed: pointsEarned >= points,
     pointsEarned,
     lastUpdated: new Date().toISOString().split("T")[0],
   };

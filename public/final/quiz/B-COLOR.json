@@ -1,8 +1,8 @@
 {
   "type": "colouring",
   "images": [
-    { "src": "/models/Sherryz707/Storage/main/Sign-B-Color.jpg", "label": "Step 1" },
-    { "src": "/models/Sherryz707/Storage/main/Letter-B-Color.jpg", "label": "Step 2" }
+    { "src": "/models/Sherryz707/Storage/main/Sign-B-Color.jpg", "label": "Step 2" },
+    { "src": "/models/Sherryz707/Storage/main/Letter-B-Color.jpg", "label": "Step 1" }
   ],
   "model": "/models/Sherryz707/Storage/main/B.glb"
 }

@@ -12,9 +12,9 @@
     }
   ],
   "mainAction": {
-    "animation": "/models/Sherryz707/Storage/main/animations/A.glb",
+    "animation": "/models/Sherryz707/Storage/main/animations/B.glb",
     "expression": ["neutral"],
-    "text": "This is A"
+    "text": "This is ب"
   },
   "feedback": {
     "correct": {

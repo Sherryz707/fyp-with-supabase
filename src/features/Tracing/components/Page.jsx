@@ -93,7 +93,7 @@ const DrawingExp = ({ onComplete, json, points }) => {
 
       <div className="bg-white rounded-3xl shadow-lg p-6 w-1/2 mb-6 z-20">
         <h2 className="text-lg font-bold mb-4 text-gray-800">
-          {state.showDrawingCanvas ? "Colour the Letter" : "Colour the Sign"}
+          {state.showDrawingCanvas ? "Colour the Sign" : "Colour the Letter"}
         </h2>
 
         <div className="relative bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 flex justify-center items-center">
@@ -117,7 +117,11 @@ const DrawingExp = ({ onComplete, json, points }) => {
 
       <div className="w-[45%] flex justify-start items-center">
         {data.model && (
-          <Experience model={data.model} selectedAnswer={state.anim} />
+          <Experience
+            model={data.model}
+            selectedAnswer={state.anim}
+            modelPosY={json?.modelPosY ?? null}
+          />
         )}
       </div>
     </div>

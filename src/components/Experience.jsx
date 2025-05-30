@@ -6,8 +6,12 @@ import { OrbitControls } from "@react-three/drei";
 import { useControls } from "leva"; // Import useControls from Leva
 import Model from "./Model";
 
-export default function Experience({ selectedAnswer, model }) {
-  console.log("in exp", selectedAnswer);
+export default function Experience({
+  selectedAnswer,
+  model,
+  modelPosY = null,
+}) {
+  console.log("MODELPOSY", modelPosY);
   // Use Leva for light controls
   const ambientLightSettings = useControls("Ambient Light", {
     intensity: { value: 3.2, min: 0, max: 5, step: 0.1 },
@@ -58,7 +62,11 @@ export default function Experience({ selectedAnswer, model }) {
         />
 
         {/* Render the model in the center */}
-        <Model selectedAnswer={selectedAnswer} model={model} />
+        <Model
+          selectedAnswer={selectedAnswer}
+          model={model}
+          modelPosY={modelPosY}
+        />
         {/* <OrbitControls enableZoom={false} enablePan={false} /> */}
       </Canvas>
     </div>

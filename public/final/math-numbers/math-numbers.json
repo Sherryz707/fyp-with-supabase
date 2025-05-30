@@ -1,30 +1,30 @@
 {
   "subcategories": [
     { 
-      "id": "A-Alphabet-id", 
-      "name": "A Alphabet", 
-      "slug":"A-Alphabet",
-      "parentCat":"cat-eng"
+      "id": "One-Number-id", 
+      "name": "One Number", 
+      "slug":"One-Number",
+      "parentCat":"cat-math"
     },{ 
-      "id": "B-Alphabet-id", 
-      "name": "B Alphabet",
-      "slug":"B-Alphabet",
-      "parentCat":"cat-eng"   
+      "id": "Two-Number-id", 
+      "name": "Two Number",
+      "slug":"Two-Number",
+      "parentCat":"cat-math"   
     },
      { 
-      "id": "C-Alphabet-id", 
-      "name": "C Alphabet",
-      "slug":"C-Alphabet",
-      "parentCat":"cat-eng"   
+      "id": "Three-Number-id", 
+      "name": "Three Number",
+      "slug":"Three-Number",
+      "parentCat":"cat-math"   
     }
   ],
   "lessons": [
     {
-      "id":"123",
-      "category": "A-Alphabet-id",
-      "parentCat":"cat-eng",
+      "id":"2829",
+      "category": "One-Number-id",
+      "parentCat":"cat-math",
       "title": "It's Colouring Time !!",
-      "description": "Its time to colour A and its sign!",
+      "description": "Its time to colour One and its sign!",
       "image": "/images/math-quiz.jpg",
       "points": 1050,
       "completed": false,
@@ -33,13 +33,13 @@
       "rewards": [
         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"A-COLOR"
+      "quizId":"ONE-COLOR"
     },
     {
-      "id":"456",
-      "category": "A-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "A Alphabet: Find the Correct Card!",
+      "id":"3031",
+      "category": "One-Number-id",
+      "parentCat":"cat-math",
+      "title": "One Number: Find the Correct Card!",
       "description": "Find out the real A Sign!",
       "image": "/images/math-quiz.jpg",
       "points": 100,
@@ -48,13 +48,13 @@
       "order": 2,       
       "rewards": [
       ],
-      "quizId":"A-CARD"
+      "quizId":"ONE-CARD"
     },
     {
-      "id":"789",
-      "category": "A-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "A Alphabet: Teacher!",
+      "id":"3233",
+      "category": "One-Number-id",
+      "parentCat":"cat-math",
+      "title": "One Number: Teacher!",
       "description": "Let's learn and test how to sign!",
       "image": "/images/math-quiz.jpg",
       "points": 75,
@@ -64,13 +64,13 @@
       "rewards": [
          { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"animationSet-A"
+      "quizId":"animationSet-1"
     },
     {
-      "id":"1011",
-      "category": "A-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "A Alphabet: Sleepy Letter",
+      "id":"3435",
+      "category": "One-Number-id",
+      "parentCat":"cat-math",
+      "title": "One Number: Sleepy Letter",
       "description": "Oh no! Wake A up by signing correctly!",
       "image": "/images/math-quiz.jpg",
       "points": 150,
@@ -80,12 +80,12 @@
       "rewards": [
         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"sleep-A"
+      "quizId":"sleep-One"
     },
     {
-      "id":"1213",
-      "category": "B-Alphabet-id",
-      "parentCat":"cat-eng",
+      "id":"3637",
+      "category": "Two-Number-id",
+      "parentCat":"cat-math",
       "title": "It's Colouring Time !!",
       "description": "Its time to colour B and its sign!",
       "image": "/images/math-quiz.jpg",
@@ -96,13 +96,13 @@
       "rewards": [
         { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"B-COLOR"
+      "quizId":"TWO-COLOR"
     },
     {
-      "id":"1415",
-      "category": "B-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "B Alphabet: Find the Correct Card!",
+      "id":"3839",
+      "category": "Two-Number-id",
+      "parentCat":"cat-math",
+      "title": "Two Number: Find the Correct Card!",
       "description": "Find out the real B Sign!",
       "image": "/images/math-quiz.jpg",
       "points": 100,
@@ -111,13 +111,13 @@
       "order": 2,       
       "rewards": [
       ],
-      "quizId":"B-CARD"
+      "quizId":"TWO-CARD"
     },
     {
-      "id":"1617",
-      "category": "B-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "B Alphabet: Teacher!",
+      "id":"4041",
+      "category": "Two-Number-id",
+      "parentCat":"cat-math",
+      "title": "Two Number: Teacher!",
       "description": "Let's learn and test how to sign!",
       "image": "/images/math-quiz.jpg",
       "points": 75,
@@ -127,13 +127,13 @@
       "rewards": [
          { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"animationSet-B"
+      "quizId":"animationSet-2"
     },
     {
-      "id":"1819",
-      "category": "B-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "B Alphabet: Sleepy Letter",
+      "id":"4243",
+      "category": "Two-Number-id",
+      "parentCat":"cat-math",
+      "title": "Two Number: Sleepy Letter",
       "description": "Oh no! Wake A up by signing correctly!",
       "image": "/images/math-quiz.jpg",
       "points": 150,
@@ -143,11 +143,11 @@
       "rewards": [
         { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"sleep-B"
+      "quizId":"sleep-Two"
     },{
-      "id":"2021",
-      "category": "C-Alphabet-id",
-      "parentCat":"cat-eng",
+      "id":"4445",
+      "category": "Three-Number-id",
+      "parentCat":"cat-math",
       "title": "It's Colouring Time !!",
       "description": "Its time to colour C and its sign!",
       "image": "/images/math-quiz.jpg",
@@ -158,13 +158,13 @@
       "rewards": [
         { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"C-COLOR"
+      "quizId":"THREE-COLOR"
     },
     {
-      "id":"2223",
-      "category": "C-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "C Alphabet: Find the Correct Card!",
+      "id":"4647",
+      "category": "Three-Number-id",
+      "parentCat":"cat-math",
+      "title": "Three Number: Find the Correct Card!",
       "description": "Find out the real C Sign!",
       "image": "/images/math-quiz.jpg",
       "points": 100,
@@ -173,13 +173,13 @@
       "order": 2,       
       "rewards": [
       ],
-      "quizId":"C-CARD"
+      "quizId":"THREE-CARD"
     },
     {
-      "id":"2425",
-      "category": "C-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "C Alphabet: Teacher!",
+      "id":"4849",
+      "category": "Three-Number-id",
+      "parentCat":"cat-math",
+      "title": "Three Number: Teacher!",
       "description": "Let's learn and test how to sign!",
       "image": "/images/math-quiz.jpg",
       "points": 75,
@@ -189,13 +189,13 @@
       "rewards": [
          { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"animationSet-C"
+      "quizId":"animationSet-3"
     },
     {
-      "id":"2627",
-      "category": "C-Alphabet-id",
-      "parentCat":"cat-eng",
-      "title": "C Alphabet: Sleepy Letter",
+      "id":"5051",
+      "category": "Three-Number-id",
+      "parentCat":"cat-math",
+      "title": "Three Number: Sleepy Letter",
       "description": "Oh no! Wake C up by signing correctly!",
       "image": "/images/math-quiz.jpg",
       "points": 150,
@@ -205,7 +205,7 @@
       "rewards": [
         { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
-      "quizId":"sleep-C"
+      "quizId":"sleep-Three"
     }
   ]
 }

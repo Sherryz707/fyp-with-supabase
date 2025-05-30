@@ -1,0 +1,165 @@
+{
+  "subcategories": [
+    { 
+      "id": "Alif-Alphabet-id", 
+      "name": "Alif Alphabet", 
+      "slug":"Alif-Alphabet",
+      "parentCat":"cat-urdu"
+    },{ 
+      "id": "Bay-Alphabet-id", 
+      "name": "Bay Alphabet",
+      "slug":"Bay-Alphabet",
+      "parentCat":"cat-urdu"   
+    },
+     { 
+      "id": "Pay-Alphabet-id", 
+      "name": "Pay Alphabet",
+      "slug":"Pay-Alphabet",
+      "parentCat":"cat-urdu"   
+    }
+  ],
+  "lessons": [
+    {
+      "id":"5556",
+      "category": "Alif-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Alif Alphabet: Teacher!",
+      "description": "Let's learn and test how to sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 75,
+      "completed": false,
+      "locked": true,   
+      "order": 1,    
+      "rewards": [
+         { "model": "/models/Sherryz707/Storage/main/Alif.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"animationSet-Alif"
+    },
+    {
+      "id":"5253",
+      "category": "Alif-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Alif Alphabet: Find the Correct Card!",
+      "description": "Find out the real Alif Sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 100,
+      "completed": false,
+      "locked": true,  
+      "order": null,       
+      "rewards": [
+      ],
+      "quizId":"ALIF-CARD"
+    },
+    {
+      "id":"5758",
+      "category": "Alif-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Alif Alphabet: Sleepy Letter",
+      "description": "Oh no! Wake A up by signing correctly!",
+      "image": "/images/math-quiz.jpg",
+      "points": 150,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"sleep-Alif"
+    },
+    {
+      "id":"6162",
+      "category": "Bay-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Bay Alphabet: Teacher!",
+      "description": "Let's learn and test how to sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 75,
+      "completed": false,
+      "locked": true,   
+      "order": 1,    
+      "rewards": [
+         { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"animationSet-Bay"
+    },
+    {
+      "id":"5960",
+      "category": "Bay-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Bay Alphabet: Find the Correct Card!",
+      "description": "Find out the real B Sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 100,
+      "completed": false,
+      "locked": true,  
+      "order": 2,       
+      "rewards": [
+      ],
+      "quizId":"BAY-CARD"
+    },
+    
+    {
+      "id":"6364",
+      "category": "Bay-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Bay Alphabet: Sleepy Letter",
+      "description": "Oh no! Wake A up by signing correctly!",
+      "image": "/images/math-quiz.jpg",
+      "points": 150,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"sleep-Bay"
+    },
+    {
+      "id":"6566",
+      "category": "Pay-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Pay Alphabet: Find the Correct Card!",
+      "description": "Find out the real C Sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 100,
+      "completed": false,
+      "locked": true,  
+      "order": 2,       
+      "rewards": [
+      ],
+      "quizId":"PAY-CARD"
+    },
+    {
+      "id":"6768",
+      "category": "Pay-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Pay Alphabet: Teacher!",
+      "description": "Let's learn and test how to sign!",
+      "image": "/images/math-quiz.jpg",
+      "points": 75,
+      "completed": false,
+      "locked": true,   
+      "order": 1,    
+      "rewards": [
+         { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"animationSet-Pay"
+    },
+    {
+      "id":"6970",
+      "category": "Pay-Alphabet-id",
+      "parentCat":"cat-urdu",
+      "title": "Pay Alphabet: Sleepy Letter",
+      "description": "Oh no! Wake C up by signing correctly!",
+      "image": "/images/math-quiz.jpg",
+      "points": 150,
+      "completed": false,
+      "locked": true,   
+      "order": null,    
+      "rewards": [
+        { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+      ],
+      "quizId":"sleep-Pay"
+    }
+  ]
+}

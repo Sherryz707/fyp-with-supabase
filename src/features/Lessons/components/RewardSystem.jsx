@@ -106,51 +106,9 @@ import { useState } from "react";
 import RewardModel from "./RewardModel";
 
 const RewardSystem = ({ cards }) => {
-  const [openReward, setOpenReward] = useState(null);
-
+  console.log("these are the cards", cards);
   return (
     <>
-      {/* FULLSCREEN OVERLAY when clicking an unlocked reward */}
-      {/* <AnimatePresence>
-        {openReward && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-base-200"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <button
-              onClick={() => setOpenReward(null)}
-              className="absolute top-6 right-6 text-base-content hover:scale-110 transition z-10"
-            >
-              <X size={40} />
-            </button>
-
-            <Canvas camera={{ position: [0, 1, 2.5], fov: 35 }}>
-              <ambientLight intensity={1.2} />
-              <directionalLight position={[2, 5, 2]} intensity={2} />
-              <OrbitControls
-                autoRotate
-                autoRotateSpeed={1}
-                enableZoom={false}
-                enablePan={false}
-              />
-              <Center>
-                <RewardModel
-                  url={
-                    cards
-                      .flatMap((lesson) => lesson.rewards)
-                      .find(
-                        (_, i) => `${Math.floor(i / 3)}-${i % 3}` === openReward
-                      )?.model
-                  }
-                />
-              </Center>
-            </Canvas>
-          </motion.div>
-        )}
-      </AnimatePresence> */}
-
       {/* REWARD GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-base-200 p-6 rounded-[var(--radius-box)] shadow-md place-items-center">
         {cards.map((lesson, lessonIndex) =>
@@ -160,33 +118,17 @@ const RewardSystem = ({ cards }) => {
               <div
                 key={rewardKey}
                 className="relative w-64 h-64 md:w-72 md:h-72 flex items-center justify-center rounded-2xl shadow-xl overflow-hidden cursor-pointer bg-base-100"
-                onClick={() => {
-                  if (lesson.completed) setOpenReward(rewardKey);
-                }}
               >
-                <div className="absolute inset-0">
-                  {lesson.completed && (
-                    <div className="absolute inset-0">
-                      <Canvas
-                        className="w-full h-full"
-                        camera={{ position: [0, 1, 2.5], fov: 35 }}
-                      >
-                        <ambientLight intensity={1.6} />
-                        <directionalLight position={[2, 5, 2]} intensity={2} />
-                        <OrbitControls
-                          autoRotate
-                          autoRotateSpeed={1}
-                          enableZoom={false}
-                          enablePan={false}
-                          enableRotate={false}
-                        />
-                        <Center>
-                          <RewardModel url={reward.model} />
-                        </Center>
-                      </Canvas>
-                    </div>
-                  )}
-                </div>
+                {lesson.completed && (
+                  <div className="absolute inset-0">
+                    <p>THIS IS COMPLETED</p>
+                    <img
+                      src="https://placehold.co/300x300"
+                      alt="Reward Placeholder"
+                      className="absolute inset-0 m-auto"
+                    />
+                  </div>
+                )}
 
                 {!lesson.completed && (
                   <motion.div

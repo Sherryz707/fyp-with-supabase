@@ -9,7 +9,10 @@ const lerpMorphTarget = (scene, target, value, speed = 0.1) => {
   scene.traverse((child) => {
     if (child.morphTargetDictionary && child.morphTargetInfluences) {
       const index = child.morphTargetDictionary[target];
-      if (index === undefined || child.morphTargetInfluences[index] === undefined) {
+      if (
+        index === undefined ||
+        child.morphTargetInfluences[index] === undefined
+      ) {
         return;
       }
       child.morphTargetInfluences[index] = MathUtils.lerp(
@@ -21,8 +24,9 @@ const lerpMorphTarget = (scene, target, value, speed = 0.1) => {
   });
 };
 
-export default function Model({ selectedAnswer,model, ...props }) {
+export default function Model({ selectedAnswer, model, modelPosY, ...props }) {
   const group = useRef();
+  console.log("MODEL POST Y IN MODEL", modelPosY);
   const { scene, nodes, materials, animations } = useGLTF(model);
   const { actions } = useAnimations(animations, group);
   const [expression, setExpression] = useState("think");
@@ -31,7 +35,7 @@ export default function Model({ selectedAnswer,model, ...props }) {
   // Leva controls for position and rotation
   const { posX, posY, posZ, rotX, rotY, rotZ } = useControls({
     posX: { value: 0, min: -5, max: 5, step: 0.1 },
-    posY: { value: 1.2, min: -5, max: 5, step: 0.1 },
+    posY: { value: modelPosY ?? 1.2, min: -5, max: 5, step: 0.1 },
     posZ: { value: 4.0, min: -5, max: 5, step: 0.1 },
     rotX: { value: 0, min: -Math.PI, max: Math.PI, step: 0.1 },
     rotY: { value: 0, min: -Math.PI, max: Math.PI, step: 0.1 },
@@ -41,23 +45,20 @@ export default function Model({ selectedAnswer,model, ...props }) {
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
     const hoverAmount = Math.sin(time * 6) * 0.07;
-    
+
     if (prevExpression.current !== expression) {
-            // Immediately remove the previous expression
-            lerpMorphTarget(scene, prevExpression.current, 0, 1);
-            prevExpression.current = expression; // Store new expression
-          }
-    
+      // Immediately remove the previous expression
+      lerpMorphTarget(scene, prevExpression.current, 0, 1);
+      prevExpression.current = expression; // Store new expression
+    }
+
     lerpMorphTarget(scene, expression, 1 + hoverAmount, 0.2); // Apply new expression
-    
-    
+
     if (group.current) {
       group.current.position.set(posX, posY, posZ);
       group.current.rotation.set(rotX, rotY, rotZ);
     }
   });
-
-
 
   useEffect(() => {
     if (!actions) return;
@@ -73,11 +74,11 @@ export default function Model({ selectedAnswer,model, ...props }) {
     }
 
     Object.values(actions).forEach((action) => action.fadeOut(0.5));
-    if ((newAnim=="angry") && actions[newAnim]) {
+    if (newAnim == "angry" && actions[newAnim]) {
       actions[newAnim].reset().fadeIn(0.5).setLoop(LoopOnce, 1).play();
       actions[newAnim].clampWhenFinished = true;
-    }else{
-      actions[newAnim].reset().fadeIn(0.5).play()
+    } else {
+      actions[newAnim].reset().fadeIn(0.5).play();
     }
 
     setExpression(newExpression);
