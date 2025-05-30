@@ -96,7 +96,7 @@ const QuizCard = ({ onComplete, points, json }) => {
     <div className="h-screen w-screen overflow-hidden p-10">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src="/models/Sherryz707/Storage/main/Circle-Cross-Triangle_Blue-1.mp4"
+        src="https://raw.githubusercontent.com/Sherryz707/Storage/main/Circle-Cross-Triangle_Blue-1.mp4"
         autoPlay
         loop
         muted

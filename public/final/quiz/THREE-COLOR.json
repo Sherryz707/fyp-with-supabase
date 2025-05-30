@@ -1,9 +1,9 @@
 {
   "type": "colouring",
   "images": [
-    { "src": "/models/Sherryz707/Storage/main/Sign-3-Color.jpg", "label": "Step 2" },
-    { "src": "/models/Sherryz707/Storage/main/Number-3-Color.png", "label": "Step 1" }
+    { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/Sign-3-Color.jpg", "label": "Step 2" },
+    { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/Number-3-Color.png", "label": "Step 1" }
   ],
-  "model": "/models/Sherryz707/Storage/main/Three.glb",
+  "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/Three.glb",
   "modelPosY":1.1
 }

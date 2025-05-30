@@ -29,7 +29,7 @@ export function AnimatedWoman({
   }, [props.path]);
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
-    "/models/Sherryz707/decor_room_builded/main/public/models/Animated Woman.glb"
+    "https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/publichttps://raw.githubusercontent.com/Animated Woman.glb"
   );
 
   const { actions } = useAnimations(animations, group);
@@ -162,5 +162,5 @@ export function AnimatedWoman({
 }
 
 useGLTF.preload(
-  "/models/Sherryz707/decor_room_builded/main/public/models/Animated Woman.glb"
+  "https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/publichttps://raw.githubusercontent.com/Animated Woman.glb"
 );

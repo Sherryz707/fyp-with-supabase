@@ -114,9 +114,21 @@ export function Model({
   );
 }
 
-useGLTF.preload("/models/Sherryz707/Storage/main/sleep/sleep-A.glb");
-useGLTF.preload("/models/Sherryz707/Storage/main/sleep/sleep-B.glb");
-useGLTF.preload("/models/Sherryz707/Storage/main/sleep/sleep-C.glb");
-useGLTF.preload("/models/Sherryz707/Storage/main/sleep/sleep-One.glb");
-useGLTF.preload("/models/Sherryz707/Storage/main/sleep/sleep-Two.glb");
-useGLTF.preload("/models/Sherryz707/Storage/main/sleep/sleep-Three.glb");
+useGLTF.preload(
+  "https://raw.githubusercontent.com/Sherryz707/Storage/main/sleep/sleep-A.glb"
+);
+useGLTF.preload(
+  "https://raw.githubusercontent.com/Sherryz707/Storage/main/sleep/sleep-B.glb"
+);
+useGLTF.preload(
+  "https://raw.githubusercontent.com/Sherryz707/Storage/main/sleep/sleep-C.glb"
+);
+useGLTF.preload(
+  "https://raw.githubusercontent.com/Sherryz707/Storage/main/sleep/sleep-One.glb"
+);
+useGLTF.preload(
+  "https://raw.githubusercontent.com/Sherryz707/Storage/main/sleep/sleep-Two.glb"
+);
+useGLTF.preload(
+  "https://raw.githubusercontent.com/Sherryz707/Storage/main/sleep/sleep-Three.glb"
+);

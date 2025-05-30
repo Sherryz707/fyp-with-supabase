@@ -1,8 +1,8 @@
 {
   "type": "colouring",
   "images": [
-    { "src": "/models/Sherryz707/Storage/main/Sign-A-Color.jpg", "label": "Step 2" },
-    { "src": "/models/Sherryz707/Storage/main/Letter-A-Color.jpg", "label": "Step 1" }
+    { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/Sign-A-Color.jpg", "label": "Step 2" },
+    { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/Letter-A-Color.jpg", "label": "Step 1" }
   ],
-  "model": "/models/Sherryz707/Storage/main/A.glb"
+  "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb"
 }

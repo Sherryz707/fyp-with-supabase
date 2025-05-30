@@ -31,7 +31,7 @@
       "locked": true,  
       "order": 1,       
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"A-COLOR"
     },
@@ -62,7 +62,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-A"
     },
@@ -78,7 +78,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"sleep-A"
     },
@@ -94,7 +94,7 @@
       "locked": true,  
       "order": 1,       
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"B-COLOR"
     },
@@ -125,7 +125,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-B"
     },
@@ -141,7 +141,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"sleep-B"
     },{
@@ -156,7 +156,7 @@
       "locked": true,  
       "order": 1,       
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"C-COLOR"
     },
@@ -187,7 +187,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-C"
     },
@@ -203,7 +203,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"sleep-C"
     }

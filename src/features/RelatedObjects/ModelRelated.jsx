@@ -48,4 +48,4 @@ export default function ModelRelated({ hovered, model, ...props }) {
 }
 
 // Preload the model (optional but recommended)
-// useGLTF.preload('/models/your-model.glb');
+// useGLTF.preload('https://raw.githubusercontent.com/your-model.glb');

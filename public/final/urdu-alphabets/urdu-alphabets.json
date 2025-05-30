@@ -31,7 +31,7 @@
       "locked": true,   
       "order": 1,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/Alif.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/Alif.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-Alif"
     },
@@ -62,7 +62,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"sleep-Alif"
     },
@@ -78,7 +78,7 @@
       "locked": true,   
       "order": 1,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-Bay"
     },
@@ -110,7 +110,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/B.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"sleep-Bay"
     },
@@ -141,7 +141,7 @@
       "locked": true,   
       "order": 1,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-Pay"
     },
@@ -157,7 +157,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/C.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"sleep-Pay"
     }

@@ -3,14 +3,14 @@
     "total_points": 30,
     "levels": 3,
     "images": [
-      { "src": "/models/Sherryz707/Storage/main/hand-1.jfif", "label": "correct" },
-      { "src": "/models/Sherryz707/Storage/main/hand-2.jfif", "label": "wrong" },
-      { "src": "/models/Sherryz707/Storage/main/hand-3.jfif", "label": "wrong" },
-      { "src": "/models/Sherryz707/Storage/main/hand-4.jfif", "label": "wrong" },
-      { "src": "/models/Sherryz707/Storage/main/hand-5.jfif", "label": "wrong" },
-      { "src": "/models/Sherryz707/Storage/main/hand-6.jfif", "label": "wrong" }
+      { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/hand-1.jfif", "label": "correct" },
+      { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/hand-2.jfif", "label": "wrong" },
+      { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/hand-3.jfif", "label": "wrong" },
+      { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/hand-4.jfif", "label": "wrong" },
+      { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/hand-5.jfif", "label": "wrong" },
+      { "src": "https://raw.githubusercontent.com/Sherryz707/Storage/main/hand-6.jfif", "label": "wrong" }
     ],
-    "model":"/models/Sherryz707/Storage/main/Two.glb",
+    "model":"https://raw.githubusercontent.com/Sherryz707/Storage/main/Two.glb",
      "modelPosY":1.1
   }
   

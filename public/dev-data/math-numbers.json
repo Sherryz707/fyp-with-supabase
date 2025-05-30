@@ -32,7 +32,7 @@
       "locked": false,  
       "order": 1,       
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"quiz123"
     },
@@ -63,7 +63,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ],
       "quizId":"animationSet-A"
     },
@@ -79,7 +79,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-        { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+        { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ]
     },
     {
@@ -94,7 +94,7 @@
       "locked": true,  
       "order": 1,      
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ]
     },
     {
@@ -109,7 +109,7 @@
       "locked": true,   
       "order": null,    
       "rewards": [
-         { "model": "/models/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
+         { "model": "https://raw.githubusercontent.com/Sherryz707/Storage/main/A.glb", "name": "Math Champion Badge" }
       ]
     }
   ]
