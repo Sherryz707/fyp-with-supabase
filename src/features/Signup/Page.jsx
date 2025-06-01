@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Mail, Lock, User, ScanFace, Globe } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import supabase from "../../services/supabase";
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -21,11 +23,24 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = signup(form.email, form.password, form.name, form.gender);
-    if (success) {
-      navigate("/category"); // Or wherever your protected route starts
-    } else {
-      setError("Email already registered");
+    setError("");
+
+    const loadingToast = toast.loading("Creating your account...");
+
+    try {
+      await signup({
+        email: form.email,
+        password: form.password,
+        name: form.name,
+        gender: form.gender,
+      });
+
+      toast.dismiss(loadingToast);
+      toast.success("Account created! Have fun 😊");
+      navigate("/category");
+    } catch (err) {
+      toast.dismiss(loadingToast);
+      toast.error(err.message);
     }
   };
 

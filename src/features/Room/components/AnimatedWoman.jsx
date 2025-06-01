@@ -162,5 +162,5 @@ export function AnimatedWoman({
 }
 
 useGLTF.preload(
-  "https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/publichttps://raw.githubusercontent.com/Animated Woman.glb"
+  "https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/public/models/Animated Woman.glb"
 );

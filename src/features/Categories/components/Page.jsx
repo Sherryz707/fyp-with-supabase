@@ -1,71 +1,42 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { fetchCategories } from "../../../services/apiLessons";
-const dataz = {
-  categories: [
-    {
-      id: "cat-eng",
-      slug: "english-alphabets",
-      title: "English Alphabets",
-      description: "Learn A-Z with interactive exercises",
-      image: "https://placehold.co/300x300",
-      color: "bg-primary text-primary-content",
-    },
-    {
-      id: "cat-math",
-      slug: "math-numbers",
-      title: "Math Numbers",
-      description: "Numbers, counting and simple arithmetic",
-      image: "https://placehold.co/300x300",
-      color: "bg-secondary text-secondary-content",
-    },
-    {
-      id: "cat-urdu",
-      slug: "urdu-alphabets",
-      title: "Urdu Alphabets",
-      description: "Numbers, counting and simple arithmetic",
-      image: "https://placehold.co/300x300",
-      color: "bg-accent text-accent-content",
-    },
-  ],
-};
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { fetchCategories } from "../../../services/categoriesService"; // make sure this path is correct
+
 export default function Categories() {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = dataz;
-
-        if (!data) {
-          console.error("Error: No categories returned");
-          return;
-        }
-
-        setCategories(data.categories);
-        console.log("received", data, "already present", categories);
+        const data = await fetchCategories();
+        setCategories(data);
       } catch (err) {
-        console.error("Unexpected error:", err);
+        console.error("Failed to fetch categories:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  const navigate = useNavigate(); // Hook for navigation
+  if (loading) {
+    return <div className="text-center p-10">Loading categories...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-base-100 flex items-center justify-center p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl">
         {categories.map((category, index) => (
           <motion.div
-            key={index}
+            key={category.id || index}
             whileHover={{ scale: 1.1, rotate: 2 }}
             whileTap={{ scale: 0.95 }}
             className={`card shadow-xl p-6 rounded-2xl cursor-pointer transition-all duration-300 ${category.color}`}
-            onClick={() => navigate(`/${category.slug}/lessons`)} // Navigate to lessons
+            onClick={() => navigate(`/${category.slug}/lessons`)}
           >
             <img
               src={category.image}
