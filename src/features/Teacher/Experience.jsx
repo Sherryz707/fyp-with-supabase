@@ -16,6 +16,8 @@ import { NoToneMapping } from "three";
 import { MathUtils } from "three";
 import { CameraControls } from "@react-three/drei";
 import { motion } from "framer-motion";
+import { distributePoints } from "./utils/Points";
+import ImageInput from "./ImageInput";
 
 const visemeMapping = {
   viseme_PP: "aa",
@@ -438,9 +440,9 @@ export default function Scene({ onComplete, json, points }) {
         }
         return updated;
       });
-      const pointsPerCorrect = Math.floor(points / 3);
+      const pointsPerCorrect = distributePoints(points, 3);
       console.log("points per corr", pointsPerCorrect, "tru", points);
-      setScore((prevScore) => prevScore + pointsPerCorrect);
+      setScore((prevScore) => prevScore + pointsPerCorrect[correctStreak]);
     } else if (type === "wrong") {
       setLives((prev) => {
         const newLives = prev - 1;
@@ -664,48 +666,13 @@ export default function Scene({ onComplete, json, points }) {
                 : {}
             }
           >
-            <div className="flex flex-col items-center justify-center h-full gap-6">
-              {/* Webcam Placeholder */}
-              <div className="relative w-full h-full bg-white border-4 border-black rounded-xl flex items-center justify-center shadow-[4px_4px_0_rgba(0,0,0,1)]">
-                {feedbackType && (
-                  <div className="absolute inset-0 bg-green-400 bg-opacity-60 flex items-center justify-center text-4xl font-extrabold text-pink-600 border-4 border-pink-600 rounded-xl">
-                    {feedbackType}
-                  </div>
-                )}
-                <p className="text-gray-700 font-semibold">
-                  [ Webcam Screen Placeholder ]
-                </p>
-              </div>
-
-              {/* Answer Buttons */}
-              <div className="flex gap-6">
-                <button
-                  onClick={() => handleAnswer("correct")}
-                  disabled={isAnim}
-                  className={`px-6 py-3 rounded-xl text-2xl font-bold border-4 transition-all
-          ${
-            isAnim
-              ? "bg-gray-300 text-gray-400 border-gray-500 cursor-not-allowed"
-              : "bg-green-300 text-black border-black shadow-[4px_4px_0_rgba(0,0,0,1)] hover:brightness-110"
-          }`}
-                >
-                  ✅ Correct!
-                </button>
-
-                <button
-                  onClick={() => handleAnswer("wrong")}
-                  disabled={isAnim}
-                  className={`px-6 py-3 rounded-xl text-2xl font-bold border-4 transition-all
-          ${
-            isAnim
-              ? "bg-gray-300 text-gray-400 border-gray-500 cursor-not-allowed"
-              : "bg-red-300 text-black border-black shadow-[4px_4px_0_rgba(0,0,0,1)] hover:brightness-110"
-          }`}
-                >
-                  ❌ Wrong
-                </button>
-              </div>
-            </div>
+            <ImageInput
+              isAnim={isAnim}
+              handleAnswer={handleAnswer}
+              feedbackType={feedbackType}
+              answer={animationSet.answer}
+              model={animationSet.model}
+            />
           </motion.div>
         </>
       )}

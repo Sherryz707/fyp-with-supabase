@@ -64,7 +64,7 @@ const App = () => {
           }
         />
         <Route
-          path="/:category/:lesson/quiz/:quizId"
+          path="/:category/quiz/:quizId"
           element={
             <ProtectedRoute>
               <QuizPage />

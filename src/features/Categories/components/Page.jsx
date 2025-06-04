@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { fetchCategories } from "../../../services/categoriesService"; // make sure this path is correct
+import toast from "react-hot-toast";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -11,10 +12,14 @@ export default function Categories() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("fetch");
         const data = await fetchCategories();
         setCategories(data);
+
+        console.log("fetchd", data);
       } catch (err) {
         console.error("Failed to fetch categories:", err);
+        toast.error(err.message || "Failed to fetch categories:");
       } finally {
         setLoading(false);
       }

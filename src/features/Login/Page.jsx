@@ -3,12 +3,17 @@ import { motion } from "framer-motion";
 import { Mail, Lock } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeController";
+import { appendWithThemeVariant } from "../../utils/ThemeString";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  const { theme } = useTheme();
+  const imageName = appendWithThemeVariant("/imgs/login", theme);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -38,7 +43,7 @@ const Login = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
         className="hidden md:block md:w-1/2 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://placehold.co/600x800')" }}
+        style={{ backgroundImage: `url("${imageName}")` }}
       ></motion.div>
 
       {/* Right Side - Form */}

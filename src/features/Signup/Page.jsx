@@ -4,9 +4,13 @@ import { Mail, Lock, User, ScanFace, Globe } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import supabase from "../../services/supabase";
+import { useTheme } from "../../context/ThemeController";
+import { appendWithThemeVariant } from "../../utils/ThemeString";
 
 const Signup = () => {
+  const { theme } = useTheme();
+  const imageName = appendWithThemeVariant("/imgs/sign_up", theme);
+  console.log("theme", theme, "img name", imageName);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -52,7 +56,7 @@ const Signup = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
         className="hidden md:block md:w-1/2 bg-cover bg-center"
-        style={{ backgroundImage: "url('https://placehold.co/600x800')" }}
+        style={{ backgroundImage: `url("${imageName}")` }}
       ></motion.div>
 
       {/* Right Side - Form */}

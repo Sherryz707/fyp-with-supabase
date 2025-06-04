@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-
+  console.log("user", user, "loading", loading);
   if (loading) return <div>Loading...</div>;
 
   if (!user) return <Navigate to="/login" replace />;

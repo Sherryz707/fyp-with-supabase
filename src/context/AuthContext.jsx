@@ -4,6 +4,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userProgress, setUserProgress] = useState([]);
   const [loading, setLoading] = useState(true);
   // Load user from localStorage on first load
   useEffect(() => {
@@ -13,13 +14,14 @@ export const AuthProvider = ({ children }) => {
       } = await supabase.auth.getSession();
 
       if (session) {
-        const {
-          data: { user },
-          error,
-        } = await supabase.auth.getUser();
-        if (user && !error) {
-          setUser(user);
-          localStorage.setItem("user", JSON.stringify(user));
+        const { data: userdb, error } = await supabase
+          .from("users") // your database table name
+          .select("*")
+          .eq("id", session.user.id)
+          .single();
+        if (userdb && !error) {
+          setUser(userdb);
+          localStorage.setItem("user", JSON.stringify(userdb));
         }
       } else {
         setUser(null);
@@ -30,16 +32,26 @@ export const AuthProvider = ({ children }) => {
     };
 
     getSession();
-
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
-        if (session?.user) {
-          setUser(session.user);
-          localStorage.setItem("user", JSON.stringify(session.user));
-        } else {
-          setUser(null);
-          localStorage.removeItem("user");
-        }
+        const handleAuthChange = async () => {
+          if (session?.user) {
+            const { data: userdb, error } = await supabase
+              .from("users") // your database table name
+              .select("*")
+              .eq("id", session.user.id)
+              .single();
+            setUser(userdb);
+            localStorage.setItem("user", JSON.stringify(userdb));
+            await fetchUserProgress(session.user.id);
+          } else {
+            setUser(null);
+            setUserProgress([]);
+            localStorage.removeItem("user");
+          }
+        };
+
+        handleAuthChange();
       }
     );
 
@@ -48,6 +60,21 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const fetchUserProgress = async (userId) => {
+    console.log("userid", userId);
+    const { data, error } = await supabase
+      .from("progress")
+      .select(
+        "id, userid, categoryid, subcategoryid, lessonid, completed, pointsearned, lastupdated"
+      )
+      .eq("userid", userId);
+
+    if (error) {
+      console.error("Failed to fetch user progress:", error.message);
+    } else {
+      setUserProgress(data);
+    }
+  };
   const login = async (email, password) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
@@ -79,8 +106,9 @@ export const AuthProvider = ({ children }) => {
     }
 
     // 2. Insert into `users` table
-    const { error: dbError } = await supabase.from("users").insert([
+    const { data, error: dbError } = await supabase.from("users").insert([
       {
+        id: authData.user.id,
         username: name,
         email,
         gender,
@@ -91,21 +119,30 @@ export const AuthProvider = ({ children }) => {
       throw new Error(dbError.message);
     }
 
-    const newUser = { email, name, gender };
-    localStorage.setItem("user", JSON.stringify(newUser));
-    setUser(newUser);
-    return newUser;
+    localStorage.setItem("user", JSON.stringify(data));
+    setUser(data);
+    return data;
   };
 
   const getCurrentUser = async () => {
-    const { data: session } = await supabase.auth.getSession();
-    if (!session.session) {
-      return null;
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.user) return null;
+
+    const { data, error } = await supabase
+      .from("users") // your database table name
+      .select("*")
+      .eq("id", session.user.id)
+      .single();
+
+    if (error) {
+      console.error("Error fetching DB user:", error);
+      throw new Error(error.message);
     }
-    const { data, error } = await supabase.auth.getUser();
-    console.log("curr user", data);
-    if (error) throw new Error(error.message);
-    return data?.user;
+
+    return data;
   };
   const logout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -114,10 +151,81 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     localStorage.removeItem("user");
   };
+  const saveUserProgress = async (card, pointsEarned) => {
+    if (!user) {
+      console.error("User not authenticated.");
+      return;
+    }
+    console.log("users", card, "pts", pointsEarned);
+    const { id: lessonId, category: categoryId, parentCat, points } = card;
+    // const progressItem = {
+    //   categoryId: parentCat,
+    //   subcategoryId: categoryId,
+    //   lessonId: lessonId,
+    //   completed: pointsEarned >= points,
+    //   pointsEarned,
+    //   lastUpdated: new Date().toISOString().split("T")[0],
+    // };
+    console.log(categoryId, lessonId);
+    const { data: existing, error: fetchError } = await supabase
+      .from("progress")
+      .select("id")
+      .eq("userid", user.id)
+      .eq("categoryid", parentCat)
+      .eq("subcategoryid", categoryId)
+      .eq("lessonid", lessonId)
+      .single();
+
+    if (fetchError && fetchError.code !== "PGRST116") {
+      console.error("Error checking existing progress:", fetchError.message);
+      return;
+    }
+
+    const payload = {
+      userid: user.id,
+      categoryid: card.parentcat,
+      subcategoryid: card.category,
+      lessonid: card.id,
+      completed: pointsEarned >= points,
+      pointsearned: pointsEarned,
+      lastupdated: new Date().toISOString().split("T")[0],
+    };
+    console.log("payload", payload);
+    if (existing) {
+      // Update
+      const { error: updateError } = await supabase
+        .from("progress")
+        .update(payload)
+        .eq("id", existing.id);
+      if (updateError) {
+        console.error("Failed to update progress:", updateError.message);
+      }
+    } else {
+      // Insert
+      const { error: insertError } = await supabase
+        .from("progress")
+        .insert([payload]);
+      if (insertError) {
+        console.error("Failed to insert progress:", insertError.message);
+      }
+    }
+
+    // Refresh local state
+    await fetchUserProgress(user.id);
+  };
 
   return (
     <AuthContext.Provider
-      value={{ user, login, signup, loading, getCurrentUser, logout }}
+      value={{
+        user,
+        login,
+        signup,
+        loading,
+        getCurrentUser,
+        logout,
+        userProgress,
+        saveUserProgress,
+      }}
     >
       {children}
     </AuthContext.Provider>
