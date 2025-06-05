@@ -44,14 +44,12 @@ const reducer = (state, action) => {
         ...state,
         map: {
           ...state.map,
-          items: [
-            ...state.map.items,
-            ...(Array.isArray(action.payload)
-              ? action.payload
-              : [action.payload]),
-          ],
+          items: Array.isArray(action.payload)
+            ? action.payload
+            : [action.payload],
         },
       };
+
     case "REMOVE_ITEMS":
       console.log(
         "in reducer case",

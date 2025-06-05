@@ -1,7 +1,10 @@
 import supabase from "./supabase";
 
 export const fetchAllItems = async () => {
-  const { data, error } = await supabase.from("items").select("*");
+  const { data, error } = await supabase
+    .from("items")
+    .select("*")
+    .order("id", { ascending: false });
   if (error) {
     console.error("Failed to fetch items:", error);
     return [];
@@ -160,3 +163,33 @@ export async function updateMapItems(newItems) {
     return { success: false, error: err };
   }
 }
+
+export const addNewRewardItem = async ({
+  name,
+  type = "glb", // default type if you want
+  is_wall = false,
+  is_walkable = false,
+  size_x = 3,
+  size_y = 3,
+}) => {
+  const { data, error } = await supabase
+    .from("items")
+    .insert([
+      {
+        name,
+        type,
+        is_wall,
+        is_walkable,
+        size_x,
+        size_y,
+      },
+    ])
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Failed to add new reward item:", error);
+    return null;
+  }
+  return data;
+};

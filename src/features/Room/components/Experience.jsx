@@ -8,6 +8,8 @@ import { Item } from "./Item";
 import { useThree } from "@react-three/fiber";
 import { useUIContext } from "../hooks/UIContext";
 import { Shop } from "./Shop";
+import { updateMapItems } from "../../../services/roomService";
+import toast from "react-hot-toast";
 const Experience = () => {
   const {
     state: UIState,
@@ -39,7 +41,7 @@ const Experience = () => {
     if (!draggedItem || draggedItem === null) {
       return;
     }
-    // console.log("in useeffect",draggedItem,"space",items[draggedItem])
+    console.log("in useeffect", draggedItem, "space", items[draggedItem]);
     const item = items[draggedItem];
     const width =
       draggedItemRotation === 1 || draggedItemRotation === 3
@@ -127,19 +129,36 @@ const Experience = () => {
     }
   };
   // Shop LOgic
+  // const onItemSelected = (item) => {
+  //   setShopMode(false);
+  //   setItems((prev) => [
+  //     ...prev,
+  //     {
+  //       ...item,
+  //       gridPosition: [0, 0],
+  //       tmp: true,
+  //     },
+  //   ]);
+  //   setDraggedItem(items.length);
+  //   setDraggedItemRotation(0);
+  // };
   const onItemSelected = (item) => {
     setShopMode(false);
-    setItems((prev) => [
-      ...prev,
-      {
-        ...item,
-        gridPosition: [0, 0],
-        tmp: true,
-      },
-    ]);
-    setDraggedItem(items.length);
+    setItems((prev) => {
+      const newItems = [
+        ...prev,
+        {
+          ...item,
+          gridPosition: [0, 0],
+          tmp: true,
+        },
+      ];
+      setDraggedItem(newItems.length - 1); // Set draggedItem based on newItems length here
+      return newItems;
+    });
     setDraggedItemRotation(0);
   };
+
   useEffect(() => {
     if (draggedItem === null) {
       setItems((prev) => prev.filter((item) => !item.tmp));
@@ -147,18 +166,84 @@ const Experience = () => {
   }, [draggedItem]);
   const controls = useRef();
   const stateCam = useThree((state) => state);
+  // useEffect(() => {
+  //   if (buildMode) {
+  //     setItems(state.map?.items || []);
+  //     stateCam.camera.position.set(8, 8, 8);
+  //     controls.current.target.set(0, 0, 0);
+  //   } else {
+  //     // TODO: update items in DB
+  //     console.log("updating....checking if fit for db", items);
+  //     // const success = await updateMapItems(items);
+  //     updateItems(items);
+  //   }
+  // }, [buildMode]);
+  // useEffect(() => {
+  //   if (buildMode) {
+  //     setItems(state.map?.items || []);
+  //     stateCam.camera.position.set(8, 8, 8);
+  //     controls.current.target.set(0, 0, 0);
+  //   } else {
+  //     const saveMap = async () => {
+  //       try {
+  //         console.log("Updating map in DB...", items);
+  //         const result = await updateMapItems(items.filter((i) => !i.tmp));
+
+  //         if (result.success) {
+  //           toast.success("Map updated successfully!");
+  //           updateItems(items.filter((i) => !i.tmp));
+  //         } else {
+  //           toast.error("Failed to update map.");
+  //         }
+  //       } catch (err) {
+  //         console.error("Error while updating map:", err);
+  //         toast.error("Unexpected error while saving map.");
+  //       }
+  //     };
+
+  //     saveMap();
+  //   }
+  // }, [buildMode, items, state.map?.items]);
+  // Sync items when buildMode or state.map.items change
   useEffect(() => {
     if (buildMode) {
       setItems(state.map?.items || []);
       stateCam.camera.position.set(8, 8, 8);
       controls.current.target.set(0, 0, 0);
-    } else {
-      // TODO: update items in DB
-      console.log("updating....checking if fit for db", items);
-      // const success = await updateMapItems(items);
-      updateItems(items);
     }
-  }, [buildMode]);
+  }, [buildMode, state.map?.items]);
+
+  // Save items when buildMode switches from true to false (or on demand)
+  useEffect(() => {
+    if (!buildMode) {
+      if (items.length === 0) return;
+
+      const saveMap = async () => {
+        try {
+          console.log("Updating map in DB...", items);
+          const result = await updateMapItems(items.filter((i) => !i.tmp));
+
+          if (result.success) {
+            toast.success("Map updated successfully!");
+            updateItems(items.filter((i) => !i.tmp));
+          } else {
+            toast.error("Failed to update map.");
+          }
+        } catch (err) {
+          console.error("Error while updating map:", err);
+          toast.error("Unexpected error while saving map.");
+        }
+      };
+
+      saveMap();
+    }
+  }, [buildMode]); // only watch buildMode, not items
+  useEffect(() => {
+    if (draggedItem === null) {
+      setItems((prev) => prev.filter((item) => !item.tmp));
+    }
+  }, [draggedItem]);
+
   useEffect(() => {
     if (shopMode) {
       stateCam.camera.position.set(0, 4, 8);

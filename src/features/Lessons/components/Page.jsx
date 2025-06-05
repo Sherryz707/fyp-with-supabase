@@ -65,7 +65,7 @@ const LessonDashboard = () => {
               const prevLessons = data.lessons.filter(
                 (l) => l.category === prevSub.id
               );
-              console.log("user progress");
+              // console.log("user progress");
               const completedPrev = prevLessons.every((lesson) =>
                 (userProgress || []).some(
                   (p) => p.lessonid === lesson.id && p.completed

@@ -13,6 +13,7 @@ export const Item = ({
 }) => {
   const { name, gridPosition, size, type, rotation: itemRotation } = item;
   const rotation = isDragging ? dragRotation : itemRotation;
+  console.log("the type of the model", type);
   const { gridToVector3 } = useGrid();
   const { scene } = useGLTF(
     `https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/public/items/${name}.${type}`

@@ -7,9 +7,9 @@ import { useGrid } from "../hooks/useGrid";
 import { SkeletonUtils } from "three-stdlib";
 
 const ShopItem = ({ map, item, ...props }) => {
-  const { name, size } = item;
+  const { name, size, type } = item;
   const { scene } = useGLTF(
-    `https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/public/items/${name}.glb`
+    `https://raw.githubusercontent.com/Sherryz707/decor_room_builded/main/public/items/${name}.${type}`
   );
   const clone = useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { gridToVector3 } = useGrid();

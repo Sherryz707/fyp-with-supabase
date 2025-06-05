@@ -20,7 +20,6 @@ export const saveUserProgress = async (userId, progress) => {
 };
 export const completeQuiz = (card, pointsEarned, currentUser) => {
   currentUser = currentUser.email;
-  console.log("user", currentUser);
   const { id: lessonId, category: categoryId, parentCat, points } = card;
   const progressItem = {
     categoryId: parentCat,
