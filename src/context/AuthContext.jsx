@@ -235,31 +235,6 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => useContext(AuthContext);
 
-// export const insertRewardItemIfNotExists = async (reward) => {
-//   const { name, type, size, walkable, wall } = reward;
-//   // // Check if the item already exists
-//   // const { data: existing } = await supabase
-//   //   .from("items")
-//   //   .select("id")
-//   //   .eq("name", name)
-//   //   .maybeSingle();
-
-//   // if (existing) return;
-//   // Build the item object conditionally
-//   const item = {
-//     name,
-//     type,
-//     size_x: size[0],
-//     size_y: size[1],
-//   };
-
-//   if (walkable !== undefined) item.is_walkable = walkable;
-//   if (wall !== undefined) item.is_wall = wall;
-
-//   const { error } = await supabase.from("items").insert([item]);
-
-//   if (error) console.error("Error inserting reward item:", error.message);
-// };
 export const insertRewardItemIfNotExists = async (input) => {
   const rewards = Array.isArray(input) ? input : [input];
 
@@ -267,20 +242,6 @@ export const insertRewardItemIfNotExists = async (input) => {
 
   for (const reward of rewards) {
     const { name, type, size_x, size_y, walkable, wall } = reward;
-
-    // Check if the item already exists
-    // const { data: existing, error: fetchError } = await supabase
-    //   .from("items")
-    //   .select("id")
-    //   .eq("name", name)
-    //   .maybeSingle();
-
-    // if (fetchError) {
-    //   console.error(`Error checking item "${name}":`, fetchError.message);
-    //   continue;
-    // }
-
-    // if (existing) continue; // Skip if already exists
 
     const item = {
       name,
