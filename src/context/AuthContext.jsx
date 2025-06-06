@@ -1,5 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import supabase from "../services/supabase";
+import {
+  createBaseItemsForUser,
+  placeBaseItemsOnMap,
+} from "../services/roomService";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -104,7 +108,14 @@ export const AuthProvider = ({ children }) => {
     if (authError) {
       throw new Error(authError.message);
     }
-
+    // If you want to auto sign-in immediately (not recommended if email confirmation is required)
+    const { data: loginData, error: loginError } =
+      await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+    if (loginError) throw new Error(loginError.message);
+    const userId = authData.user.id;
     // 2. Insert into `users` table
     const { data, error: dbError } = await supabase.from("users").insert([
       {
@@ -118,7 +129,16 @@ export const AuthProvider = ({ children }) => {
     if (dbError) {
       throw new Error(dbError.message);
     }
+    // 3. Insert base items
+    await createBaseItemsForUser(userId);
 
+    // 4. Place items on map
+    await placeBaseItemsOnMap(userId, [
+      { name: "cabinetBedDrawerTable", gridPosition: [13, 19] },
+      { name: "cabinetBedDrawer", gridPosition: [19, 19] },
+      { name: "bedDouble", gridPosition: [14, 15] },
+      { name: "plant", gridPosition: [12, 20] },
+    ]);
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
     return data;
@@ -208,7 +228,7 @@ export const AuthProvider = ({ children }) => {
       if (insertError) {
         console.error("Failed to insert progress:", insertError.message);
       }
-      await insertRewardItemIfNotExists(card.rewards);
+      await insertRewardItemIfNotExists(card.rewards, user.id);
     }
 
     // Refresh local state
@@ -235,7 +255,7 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuth = () => useContext(AuthContext);
 
-export const insertRewardItemIfNotExists = async (input) => {
+export const insertRewardItemIfNotExists = async (input, userId) => {
   const rewards = Array.isArray(input) ? input : [input];
 
   const itemsToInsert = [];
@@ -244,6 +264,7 @@ export const insertRewardItemIfNotExists = async (input) => {
     const { name, type, size_x, size_y, walkable, wall } = reward;
 
     const item = {
+      user_id: userId,
       name,
       type,
       size_x,
@@ -259,7 +280,8 @@ export const insertRewardItemIfNotExists = async (input) => {
   if (itemsToInsert.length > 0) {
     const { error: insertError } = await supabase
       .from("items")
-      .insert(itemsToInsert);
+      .insert(itemsToInsert)
+      .eq("userid");
 
     if (insertError) {
       console.error("Error inserting items:", insertError.message);

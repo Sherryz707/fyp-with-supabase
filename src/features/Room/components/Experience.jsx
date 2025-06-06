@@ -1,4 +1,3 @@
-"use client";
 import { Environment, Grid, OrbitControls, useCursor } from "@react-three/drei";
 import { AnimatedWoman } from "./AnimatedWoman";
 import { useEffect, useRef, useState } from "react";
@@ -10,6 +9,7 @@ import { useUIContext } from "../hooks/UIContext";
 import { Shop } from "./Shop";
 import { updateMapItems } from "../../../services/roomService";
 import toast from "react-hot-toast";
+import { useAuth } from "../../../context/AuthContext";
 const Experience = () => {
   const {
     state: UIState,
@@ -24,7 +24,7 @@ const Experience = () => {
   const [dragPosition, setDragPosition] = useState([0, 0]);
   const [canDrop, setCanDrop] = useState(false);
   const [items, setItems] = useState(state.map.items);
-
+  const { user } = useAuth();
   useEffect(() => {
     if (deletedItem === null || deletedItem === undefined) return;
 
@@ -221,7 +221,10 @@ const Experience = () => {
       const saveMap = async () => {
         try {
           console.log("Updating map in DB...", items);
-          const result = await updateMapItems(items.filter((i) => !i.tmp));
+          const result = await updateMapItems(
+            items.filter((i) => !i.tmp),
+            user.id
+          );
 
           if (result.success) {
             toast.success("Map updated successfully!");
