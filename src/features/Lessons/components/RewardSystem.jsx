@@ -55,7 +55,6 @@ import { OrbitControls } from "@react-three/drei";
 import RewardModel from "./RewardModel";
 import { motion } from "framer-motion";
 import { Gift } from "lucide-react";
-import { addNewRewardItem } from "../../../services/roomService";
 
 const RewardSystem = ({ cards }) => {
   return (
