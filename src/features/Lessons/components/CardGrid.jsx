@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import { useTheme } from "../../../context/ThemeController";
 import { resolveAssetPath } from "../../../utils/ThemeString";
-import { useState } from "react";
+import { useRef } from "react";
 
 const CardGrid = ({
   points,
@@ -14,6 +14,7 @@ const CardGrid = ({
   setPoints,
   lessonId,
 }) => {
+  const musicRef = useRef(null);
   const { user } = useAuth();
   const { theme } = useTheme();
   console.log("active tab", activeTab, lessonId);
@@ -27,6 +28,12 @@ const CardGrid = ({
       </div>
 
       {/* Grid for Cards */}
+      <audio
+        ref={musicRef}
+        src="/sounds/game_intro.mp3"
+        preload="auto"
+        onPlay={() => console.log("Playing music!")}
+      />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-full">
         {cards.map((card, index) => {
           const image = resolveAssetPath(card.id, theme, user.gender);
@@ -75,15 +82,26 @@ const CardGrid = ({
               {/* Play Now Button */}
               <button
                 // onClick={() => onQuizComplete(index)}
-                onClick={() =>
-                  navigate(`/${category}/quiz/${card.quizid}`, {
-                    state: {
-                      points: card.points,
-                      card: card,
-                      replay: false,
-                    },
-                  })
-                }
+                onClick={() => {
+                  const audio = musicRef.current;
+                  if (audio) {
+                    audio.currentTime = 0;
+                    audio.volume = 1;
+                    audio
+                      .play()
+                      .catch((err) => console.warn("Play error:", err));
+                  }
+
+                  setTimeout(() => {
+                    navigate(`/${category}/quiz/${card.quizid}`, {
+                      state: {
+                        points: card.points,
+                        card: card,
+                        replay: false,
+                      },
+                    });
+                  }, 900);
+                }}
                 className={`mt-4 px-4 py-2 rounded-[var(--radius-field)] font-bold transition ${
                   card.completed
                     ? "bg-success text-success-content cursor-not-allowed"
@@ -102,19 +120,26 @@ const CardGrid = ({
               {/* Play Again */}
               {!card.unlocked && card.completed && (
                 <button
-                  onClick={() =>
-                    navigate(
-                      `/${category}/${activeTab.slug}/quiz/${card.quizid}`,
-                      {
-                        replace: true,
+                  onClick={() => {
+                    const audio = musicRef.current;
+                    if (audio) {
+                      audio.currentTime = 0;
+                      audio.volume = 1;
+                      audio
+                        .play()
+                        .catch((err) => console.warn("Play error:", err));
+                    }
+
+                    setTimeout(() => {
+                      navigate(`/${category}/quiz/${card.quizid}`, {
                         state: {
                           points: card.points,
                           card: card,
                           replay: true,
                         },
-                      }
-                    )
-                  }
+                      });
+                    }, 900);
+                  }}
                   className={`mt-4 px-4 py-2 ml-4 rounded-[var(--radius-field)] font-bold transition bg-accent text-accent-content hover:brightness-110`}
                 >
                   Play Again!

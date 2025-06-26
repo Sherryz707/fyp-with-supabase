@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useReducer } from "react";
 import * as THREE from "three";
 import pathfinding from "pathfinding";
 import { fetchAllItems, fetchAllMapItems } from "../../../services/roomService";
+import { useAuth } from "../../../context/AuthContext";
 // Initial state
 
 const initialState = {
@@ -93,28 +94,11 @@ const finder = new pathfinding.AStarFinder({
 // Provider component
 export const DecorProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  // useEffect(() => {
-  //   console.log("use effect in context prov");
-  //   dispatch({ type: "SET_POSITION", payload: generateRandomPosition() });
-  //   updateGrid(); // Update the UI with the new grid data
-  // }, []);
-  // useEffect(() => {
-  //   console.log("ITEMS IN STATE", state.map);
-  //   const initialize = async () => {
-  //     const items = await fetchAllItems();
-  //     dispatch({ type: "LOAD_ITEMS", payload: items }); // New case
-  //   };
-
-  //   initialize();
-
-  //   dispatch({ type: "SET_POSITION", payload: generateRandomPosition() });
-  //   updateGrid();
-  // }, []);
+  const { user } = useAuth();
   useEffect(() => {
     const initialize = async () => {
-      const allItems = await fetchAllItems(); // This should return placed items
-      const itemDefs = await fetchAllMapItems(); // Optional if items don't include size/type/etc.
+      const allItems = await fetchAllItems(user.id); // This should return placed items
+      const itemDefs = await fetchAllMapItems(user.id); // Optional if items don't include size/type/etc.
       console.log("map items", itemDefs);
       dispatch({ type: "LOAD_ITEMS", payload: allItems }); // this sets state.items as the master item definitions
       dispatch({ type: "SET_ITEMS", payload: itemDefs }); // this sets state.map.items (placed items)

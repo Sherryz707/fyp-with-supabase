@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback, useMemo } from "react";
 import Experience from "../../components/Experience";
 import Confetti from "react-confetti";
+import { useRef } from "react";
+import Loading from "../../components/Loading";
 
 const QuizCard = ({ onComplete, points, json }) => {
   const [level, setLevel] = useState(1);
@@ -8,6 +10,8 @@ const QuizCard = ({ onComplete, points, json }) => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
   const [quizData] = useState(json); // Directly use the prop
+  const correctAudioRef = useRef(null);
+  const wrongAudioRef = useRef(null);
 
   // Memoized calculations
   const { TOTAL_POINTS, LEVELS, POINTS_PER_LEVEL } = useMemo(
@@ -56,6 +60,9 @@ const QuizCard = ({ onComplete, points, json }) => {
 
       if (isCorrect) {
         setScore((prev) => prev + pointsToAdd);
+        correctAudioRef.current?.play().catch(() => {});
+      } else {
+        wrongAudioRef.current?.play().catch(() => {});
       }
 
       const timer = setTimeout(() => {
@@ -82,12 +89,7 @@ const QuizCard = ({ onComplete, points, json }) => {
     ]
   );
 
-  if (!quizData)
-    return (
-      <div className="h-screen w-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
+  if (!quizData) return <Loading />;
 
   // Progress calculation
   const progressPercentage = ((level - 1) / (LEVELS - 1)) * 100;
@@ -102,6 +104,8 @@ const QuizCard = ({ onComplete, points, json }) => {
         muted
         playsInline
       />
+      <audio ref={correctAudioRef} src="/sounds/correct.mp3" preload="auto" />
+      <audio ref={wrongAudioRef} src="/sounds/wrong.mp3" preload="auto" />
 
       <div className="relative h-full w-full flex">
         {selectedAnswer === "correct" && (
