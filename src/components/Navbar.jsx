@@ -12,11 +12,6 @@ function Navbar() {
         </Link>
       </div>
       <div className="flex gap-2 justify-center items-center">
-        <input
-          type="text"
-          placeholder="Search"
-          className="input input-bordered w-24 md:w-auto"
-        />
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link to="/">Home</Link>
