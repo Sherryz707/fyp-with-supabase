@@ -8,7 +8,7 @@ function Navbar() {
     <div className="navbar bg-base-100 shadow-sm px-10">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
-          daisyUI
+          Signify
         </Link>
       </div>
       <div className="flex gap-2 justify-center items-center">

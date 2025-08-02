@@ -37,7 +37,6 @@ const CardGrid = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-full">
         {cards.map((card, index) => {
           const image = resolveAssetPath(card.id, theme, user.gender);
-          console.log("image", image);
           return (
             <div
               key={index}

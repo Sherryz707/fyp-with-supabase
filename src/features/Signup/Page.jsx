@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, ScanFace, Globe } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
@@ -10,7 +10,6 @@ import { appendWithThemeVariant } from "../../utils/ThemeString";
 const Signup = () => {
   const { theme } = useTheme();
   const imageName = appendWithThemeVariant("/imgs/sign_up", theme);
-  console.log("theme", theme, "img name", imageName);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -18,7 +17,8 @@ const Signup = () => {
     gender: "",
   });
   const [error, setError] = useState("");
-  const { signup } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false); // New loading state
+  const { signup, user, loading } = useAuth(); // Include user and loading
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,6 +28,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setIsSubmitting(true); // Disable form submission
 
     const loadingToast = toast.loading("Creating your account...");
 
@@ -41,12 +42,20 @@ const Signup = () => {
 
       toast.dismiss(loadingToast);
       toast.success("Account created! Have fun 😊");
-      navigate("/category");
+      // Navigation will be handled in useEffect
     } catch (err) {
       toast.dismiss(loadingToast);
       toast.error(err.message);
+      setIsSubmitting(false); // Re-enable form on error
     }
   };
+
+  // Navigate when user is authenticated
+  useEffect(() => {
+    if (!loading && user) {
+      navigate("/category", { replace: true });
+    }
+  }, [user, loading, navigate]);
 
   return (
     <div className="flex min-h-screen w-full">
@@ -89,6 +98,7 @@ const Signup = () => {
                 className="w-full pl-10 p-2 rounded-field border border-neutral bg-base-300"
                 placeholder="John Doe"
                 required
+                disabled={isSubmitting} // Disable input during submission
               />
             </div>
           </div>
@@ -106,6 +116,7 @@ const Signup = () => {
                 className="w-full pl-10 p-2 rounded-field border border-neutral bg-base-300"
                 placeholder="example@mail.com"
                 required
+                disabled={isSubmitting} // Disable input during submission
               />
             </div>
           </div>
@@ -123,9 +134,11 @@ const Signup = () => {
                 className="w-full pl-10 p-2 rounded-field border border-neutral bg-base-300"
                 placeholder="••••••••"
                 required
+                disabled={isSubmitting} // Disable input during submission
               />
             </div>
           </div>
+
           {/* Gender Field */}
           <div className="mb-3">
             <label className="block text-sm text-base-content">Gender</label>
@@ -136,6 +149,7 @@ const Signup = () => {
                 onChange={handleChange}
                 className="w-full pl-3 p-2 rounded-field border border-neutral bg-base-300"
                 required
+                disabled={isSubmitting} // Disable select during submission
               >
                 <option value="" disabled>
                   Select Gender
@@ -149,11 +163,14 @@ const Signup = () => {
           {/* Signup Button */}
           <motion.button
             type="submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-full bg-primary text-primary-content py-2 rounded-box mt-4"
+            whileHover={{ scale: isSubmitting ? 1 : 1.05 }} // Disable hover effect when submitting
+            whileTap={{ scale: isSubmitting ? 1 : 0.95 }} // Disable tap effect when submitting
+            className={`w-full bg-primary text-primary-content py-2 rounded-box mt-4 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isSubmitting} // Disable button during submission
           >
-            Sign Up
+            {isSubmitting ? "Creating Account..." : "Sign Up"}
           </motion.button>
 
           <p className="text-center text-sm text-base-content mt-4">
@@ -165,12 +182,14 @@ const Signup = () => {
             <button
               className="bg-info p-2 rounded-full shadow-md"
               type="button"
+              disabled={isSubmitting} // Disable social buttons during submission
             >
               <Globe className="text-info-content" />
             </button>
             <button
               className="bg-secondary p-2 rounded-full shadow-md"
               type="button"
+              disabled={isSubmitting} // Disable social buttons during submission
             >
               <ScanFace className="text-secondary-content" />
             </button>

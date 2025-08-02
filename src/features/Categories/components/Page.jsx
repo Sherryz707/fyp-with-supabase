@@ -12,11 +12,8 @@ export default function Categories() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("fetch");
         const data = await fetchCategories();
         setCategories(data);
-
-        console.log("fetchd", data);
       } catch (err) {
         console.error("Failed to fetch categories:", err);
         toast.error(err.message || "Failed to fetch categories:");
@@ -42,12 +39,13 @@ export default function Categories() {
             whileTap={{ scale: 0.95 }}
             className={`card shadow-xl p-6 rounded-2xl cursor-pointer transition-all duration-300 ${category.color}`}
             onClick={() => navigate(`/${category.slug}/lessons`)}
+            aria-label={`Navigate to ${category.title} lessons`}
           >
-            <img
-              src={category.image}
-              alt={category.title}
-              className="rounded-xl w-full h-64 object-cover shadow-lg"
-            />
+            <div className="rounded-xl w-full h-64 shadow-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+              <div className="text-8xl font-bold text-white tracking-wide">
+                {category.image}
+              </div>
+            </div>
             <div className="mt-4 text-center">
               <h3 className="text-xl font-bold text-primary-content">
                 {category.title}

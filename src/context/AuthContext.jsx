@@ -108,40 +108,60 @@ export const AuthProvider = ({ children }) => {
     if (authError) {
       throw new Error(authError.message);
     }
-    // If you want to auto sign-in immediately (not recommended if email confirmation is required)
+
+    // 2. Ensure user is logged in
     const { data: loginData, error: loginError } =
       await supabase.auth.signInWithPassword({
         email,
         password,
       });
-    if (loginError) throw new Error(loginError.message);
+
+    if (loginError) {
+      throw new Error(loginError.message);
+    }
+
     const userId = authData.user.id;
-    // 2. Insert into `users` table
-    const { data, error: dbError } = await supabase.from("users").insert([
-      {
-        id: authData.user.id,
-        username: name,
-        email,
-        gender,
-      },
-    ]);
+
+    // 3. Insert into `users` table
+    const { data: insertedData, error: dbError } = await supabase
+      .from("users")
+      .insert([
+        {
+          id: userId,
+          username: name,
+          email,
+          gender,
+        },
+      ])
+      .select()
+      .single(); // Use .select().single() to get the inserted user object
 
     if (dbError) {
       throw new Error(dbError.message);
     }
-    // 3. Insert base items
+
+    // 4. Set user state with the fetched user data
+    const userData = insertedData || {
+      id: userId,
+      username: name,
+      email,
+      gender,
+    };
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    // 5. Insert base items
     await createBaseItemsForUser(userId);
 
-    // 4. Place items on map
+    // 6. Place items on map
     await placeBaseItemsOnMap(userId, [
       { name: "cabinetBedDrawerTable", gridPosition: [13, 19] },
       { name: "cabinetBedDrawer", gridPosition: [19, 19] },
       { name: "bedDouble", gridPosition: [14, 15] },
       { name: "plant", gridPosition: [12, 20] },
     ]);
-    localStorage.setItem("user", JSON.stringify(data));
-    setUser(data);
-    return data;
+
+    return userData;
   };
 
   const getCurrentUser = async () => {
