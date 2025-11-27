@@ -19,6 +19,18 @@ const HomePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            {/* Video */}
+            <video
+              src="https://res.cloudinary.com/dvklgnyge/video/upload/v1764277142/project_demo_small_pyc7b1.mp4"
+              controls
+              loop
+              muted
+              playsInline
+              className="w-full rounded-lg mb-6 shadow-lg"
+            />
+            <p className="text-sm text-base-content/60 italic mb-6">
+              Tip: You can speed up playback for a quicker demo 
+            </p>
             <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
               AI-Powered Sign Language E-Learning Platform
             </h1>
